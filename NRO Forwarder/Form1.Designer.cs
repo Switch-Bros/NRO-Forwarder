@@ -207,7 +207,7 @@
             this.textBox_Version.Size = new System.Drawing.Size(124, 20);
             this.textBox_Version.TabIndex = 12;
             this.textBox_Version.Text = "1.0.0";
-            this.toolTip1.SetToolTip(this.textBox_Version, "Version limited to 10 digits");
+            this.toolTip1.SetToolTip(this.textBox_Version, "Version limited to 16 digits");
             this.textBox_Version.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_Version_KeyPress);
             // 
             // label1
