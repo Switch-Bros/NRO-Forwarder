@@ -613,6 +613,17 @@ namespace NRO_Forwarder
                 stream.Write(data, 0, data.Length);
             }
         }
+
+        private void textBox_TIT_TextChanged(object sender, EventArgs e)
+        {
+            int i = textBox_TIT.Text.Length;
+            if (i >= 16)
+            {
+                string check = textBox_TIT.Text;
+                String x = ReplaceAtIndex(0, '0', check);
+                textBox_TIT.Text = x;
+            }
+        }
     }
 
     public class Item

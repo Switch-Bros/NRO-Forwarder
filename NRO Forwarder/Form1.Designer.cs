@@ -169,6 +169,7 @@
             this.textBox_TIT.Size = new System.Drawing.Size(124, 20);
             this.textBox_TIT.TabIndex = 7;
             this.toolTip1.SetToolTip(this.textBox_TIT, "Double click to generate a random value");
+            this.textBox_TIT.TextChanged += new System.EventHandler(this.textBox_TIT_TextChanged);
             this.textBox_TIT.DoubleClick += new System.EventHandler(this.textBox_TIT_DoubleClick);
             this.textBox_TIT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_TIT_KeyPress);
             // 
@@ -275,10 +276,11 @@
             // comboBox_retro
             // 
             this.comboBox_retro.Enabled = false;
+            this.comboBox_retro.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox_retro.FormattingEnabled = true;
-            this.comboBox_retro.Location = new System.Drawing.Point(175, 441);
+            this.comboBox_retro.Location = new System.Drawing.Point(189, 440);
             this.comboBox_retro.Name = "comboBox_retro";
-            this.comboBox_retro.Size = new System.Drawing.Size(93, 21);
+            this.comboBox_retro.Size = new System.Drawing.Size(79, 20);
             this.comboBox_retro.TabIndex = 20;
             this.toolTip1.SetToolTip(this.comboBox_retro, "Select system");
             this.comboBox_retro.Visible = false;
@@ -289,7 +291,7 @@
             this.textBox_Path.Enabled = false;
             this.textBox_Path.Location = new System.Drawing.Point(12, 440);
             this.textBox_Path.Name = "textBox_Path";
-            this.textBox_Path.Size = new System.Drawing.Size(157, 20);
+            this.textBox_Path.Size = new System.Drawing.Size(168, 20);
             this.textBox_Path.TabIndex = 21;
             this.textBox_Path.Text = "/switch/tinwoo/tinwoo.nro";
             this.toolTip1.SetToolTip(this.textBox_Path, "Enter the full path for the RertoArch core");
