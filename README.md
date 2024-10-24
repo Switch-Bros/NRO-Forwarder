@@ -8,7 +8,7 @@ You will need a pc with Visual Studio 2022. You also need to create a folder cal
 
 ## How to use guide
 On the main picture box you can drag a graphics file, supported formats are  png,jpg,jpeg,tif,bmp,gif
-Your file will be resized to 256x256 pixels and be converted to jpg automatically.
+A new graphics file will be created automatically which will be a 256x256 pixel jpg.
 
 You can also drag an existing nro file onto this, information from that will auto populate the programs input boxes
 and graphics from it will be loaded into the picture box.
