@@ -2,7 +2,7 @@
 PC Homebrew for creating NRO forwarders for the Nintendo Switch.
 
 # Building
-You will need a pc with Visual Studio 2022
+You will need a pc with Visual Studio 2022 (You also need to create a folder called Tools in the build folder or it will not run).
 
 ![Screenshot](https://i.imgur.com/AhfXb5q.png)
 
