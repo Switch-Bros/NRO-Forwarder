@@ -37,6 +37,9 @@ namespace NRO_Forwarder
             textBox_publisher.MaxLength = 256;
             textBox_nropath.MaxLength = 256;
             textBox_RomPath.MaxLength = 256;
+            checkBox1_Video.Checked = true;
+            checkBox_profile.Checked = true;
+            checkBox_Screeshot.Checked = true;
             String iconpath = "Tools/control/icon_AmericanEnglish.dat";
             pictureBox1.BackgroundImage.Save(iconpath); //always set the default icon
         }
