@@ -46,6 +46,7 @@ program fixes those issues and converts them properly for you.
 ## PlayLogPolicy & PlayLogQueryCapability
 Included control.nacp - modifies the PlayLogPolicy flag (0x3037) which is now set to 0x02 (Return None).
 PlayLogQueryCapability (0x3210) is also set to 0x02 (Allow all titles). This allows some forwaders that were not showing up when installed via Tinwoo to now show up properly.
+This modded control.nacp is also blanked so that NRO forwarders exit properly and show the start logo's properly.
 
 ## Alternatives to this program
 [NSP Fprwarder Generator](https://nsp-forwarder-git-fork-masagrator-main-tootallteam.vercel.app/)
