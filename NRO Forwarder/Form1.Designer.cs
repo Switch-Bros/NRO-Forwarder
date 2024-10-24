@@ -161,6 +161,7 @@
             this.toolTip1.SetToolTip(this.button_Generate, "Generate forwarder NSP");
             this.button_Generate.UseVisualStyleBackColor = true;
             this.button_Generate.Click += new System.EventHandler(this.button_Generate_Click);
+            this.button_Generate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.button_Generate_KeyDown);
             // 
             // textBox_TIT
             // 

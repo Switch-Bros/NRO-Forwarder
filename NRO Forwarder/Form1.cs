@@ -61,6 +61,9 @@ namespace NRO_Forwarder
                         else if (ext == ".nro")
                         {
                             filepath = filename;
+                            string name = Path.GetFileName(filepath);
+                            string newpath = (("/switch/tinwoo/tinwoo.nro").Replace("tinwoo", name).Replace(ext, "") + ext);
+                            textBox_nropath.Text = newpath;
                             Find();
                         }
                     }
@@ -307,6 +310,10 @@ namespace NRO_Forwarder
                 {
 
                     String x = openFileDialog.FileName;
+                    string name = Path.GetFileName(x);
+                    string ext = Path.GetExtension(x);
+                    string newpath = (("/switch/tinwoo/tinwoo.nro").Replace("tinwoo", name).Replace(ext, "") + ext);
+                    textBox_nropath.Text = newpath;
                     bool myfile = x.Contains("nro");
                     if (myfile)
                     {
@@ -473,7 +480,7 @@ namespace NRO_Forwarder
                 }
                 if (checkBox1_Video.Checked)
                 {
-                    
+
                     pos = 12341; //Video (0x3035)
                     byte[] VideoEnable = { 0x02 }; //auto
                     ReplaceData(file, pos, VideoEnable);
@@ -481,18 +488,18 @@ namespace NRO_Forwarder
                 else
                 {
                     pos = 12341; //Video (0x3035)
-                    byte[] videoblank = { 0x00 }; //reset
+                    byte[] videoblank = { 0x00 }; //off
                     ReplaceData(file, pos, videoblank);
                 }
                 if (checkBox_profile.Checked)
                 {
-                    pos = 12325; //Screenshots Enable (0x3025)
+                    pos = 12325; //profile Enable (0x3025)
                     byte[] ProfileEnable = { 0x01 };
                     ReplaceData(file, pos, ProfileEnable);
                 }
                 else
                 {
-                    pos = 12325; //Screenshots Enable (0x3025)
+                    pos = 12325; //profile Enable (0x3025)
                     byte[] ProfileBlank = { 0x00 };
                     ReplaceData(file, pos, ProfileBlank);
                 }
@@ -582,7 +589,7 @@ namespace NRO_Forwarder
                             UseShellExecute = true,
                             Verb = "open"
                         });
-                    } 
+                    }
                 }
 
                 catch (Exception error)
@@ -604,7 +611,7 @@ namespace NRO_Forwarder
             letters[i] = value;
             return string.Join("", letters);
         }
-        
+
         public static void ReplaceData(string filename, int position, byte[] data)
         {
             using (Stream stream = File.Open(filename, FileMode.Open))
@@ -622,6 +629,44 @@ namespace NRO_Forwarder
                 string check = textBox_TIT.Text;
                 String x = ReplaceAtIndex(0, '0', check);
                 textBox_TIT.Text = x;
+            }
+        }
+
+        private void button_Generate_KeyDown(object sender, KeyEventArgs e)
+        {
+            String file = "Tools/exefs/main.npdm";
+            int pos1 = 818; //(0x332)
+            int pos2 = 1010; //(0x3F2)
+            byte[] patch = { 0x08 };
+            byte[] patch2 = { 0x06 };
+            byte[] patch3 = { 0x04 };
+            string info = "main.npdm Patched at 0x332 + 0x3F2";
+
+            if (File.Exists("Tools/exefs/main.npdm"))
+            {
+                switch (e.KeyData)
+                {
+                    //Patch main.npdm Offsets: 0x332, 0x3F2
+                    case Keys.Z:
+                        ReplaceData(file, pos1, patch);
+                        ReplaceData(file, pos2, patch);
+                        MessageBox.Show("0x08", info); //force_debug enabled
+                        break;
+                    case Keys.X:
+                        ReplaceData(file, pos1, patch2);
+                        ReplaceData(file, pos2, patch2);
+                        MessageBox.Show("0x06", info); //Atmosphere pre-1.8.0
+                        break;
+                    case Keys.C:
+                        ReplaceData(file, pos1, patch3);
+                        ReplaceData(file, pos2, patch3);
+                        MessageBox.Show("0x04", info); //All version compatible
+                        break;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Cant'find " + file, "Oops"); //Atmosphere pre-1.8.0
             }
         }
     }
