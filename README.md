@@ -20,7 +20,7 @@ to "0" as this is required for Hackbrewpack.
 
 ## Forwarder Types
 For a normal homebrew, don't check the RetroArch forwarder box, just enter the relevant paths to where you
-expect to run your nro from from, usually this is inside the sd card switch folder inside the apps own folder.
+expect to run your nro from, usually this is inside the sd card switch folder inside the apps own folder.
 
 RetroArch Forwarders can be made for various gaming systems, such as the Amiga500 using Uae4all2, you have two
 paths to fill in, one for the nro file and one for the game/config file.
