@@ -43,6 +43,9 @@ NRO forwarders for firmware version 19+ and AtmosphereNX 1.8.0+
 On other forwarder programs, I experienced graphic issues in the forwarders due to the way they converted the icon files, this
 program fixes those issues and converts them properly for you.
 
+## PlayLogQueryCapability
+Included control.nacp - modifies the PlayLogQueryCapability flag which is now set to 0x02 (All titleIDs are allowed). This fixes icons displayed in Tinfoil, also this allows some forwaders that were not showing up when installed via Tinwoo to now show up properly.
+
 ## Alternatives to this program
 [NSP Fprwarder Generator](https://nsp-forwarder-git-fork-masagrator-main-tootallteam.vercel.app/)
 [NRO Editor](https://nro-editor-git-fork-masagrator-main-tootallteam.vercel.app/)
