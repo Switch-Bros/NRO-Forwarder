@@ -691,6 +691,14 @@ namespace NRO_Forwarder
                 {
                     ch[1] = '1';
                 }
+                if (ch[2] != '0')
+                {
+                    ch[2] = '0';
+                }
+                if (ch[3] != '0')
+                {
+                    ch[3] = '0';
+                }
             }
             string newstring = new string(ch);
             textBox_TIT.Text = newstring.ToUpper();
