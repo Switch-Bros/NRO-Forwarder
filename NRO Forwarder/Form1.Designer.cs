@@ -57,6 +57,7 @@
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.button_explore = new System.Windows.Forms.Button();
             this.button_open = new System.Windows.Forms.Button();
+            this.checkBox_licence = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -153,7 +154,7 @@
             // 
             // button_Generate
             // 
-            this.button_Generate.Location = new System.Drawing.Point(189, 505);
+            this.button_Generate.Location = new System.Drawing.Point(189, 522);
             this.button_Generate.Name = "button_Generate";
             this.button_Generate.Size = new System.Drawing.Size(79, 23);
             this.button_Generate.TabIndex = 5;
@@ -165,7 +166,7 @@
             // 
             // textBox_TIT
             // 
-            this.textBox_TIT.Location = new System.Drawing.Point(12, 323);
+            this.textBox_TIT.Location = new System.Drawing.Point(12, 340);
             this.textBox_TIT.Name = "textBox_TIT";
             this.textBox_TIT.Size = new System.Drawing.Size(124, 20);
             this.textBox_TIT.TabIndex = 7;
@@ -176,7 +177,7 @@
             // 
             // textBox_AppTitle
             // 
-            this.textBox_AppTitle.Location = new System.Drawing.Point(12, 362);
+            this.textBox_AppTitle.Location = new System.Drawing.Point(12, 379);
             this.textBox_AppTitle.Name = "textBox_AppTitle";
             this.textBox_AppTitle.Size = new System.Drawing.Size(256, 20);
             this.textBox_AppTitle.TabIndex = 9;
@@ -185,7 +186,7 @@
             // 
             // textBox_publisher
             // 
-            this.textBox_publisher.Location = new System.Drawing.Point(12, 401);
+            this.textBox_publisher.Location = new System.Drawing.Point(12, 418);
             this.textBox_publisher.Name = "textBox_publisher";
             this.textBox_publisher.Size = new System.Drawing.Size(256, 20);
             this.textBox_publisher.TabIndex = 10;
@@ -194,7 +195,7 @@
             // 
             // textBox_nropath
             // 
-            this.textBox_nropath.Location = new System.Drawing.Point(12, 440);
+            this.textBox_nropath.Location = new System.Drawing.Point(12, 457);
             this.textBox_nropath.Name = "textBox_nropath";
             this.textBox_nropath.Size = new System.Drawing.Size(256, 20);
             this.textBox_nropath.TabIndex = 11;
@@ -203,7 +204,7 @@
             // 
             // textBox_Version
             // 
-            this.textBox_Version.Location = new System.Drawing.Point(144, 323);
+            this.textBox_Version.Location = new System.Drawing.Point(144, 340);
             this.textBox_Version.Name = "textBox_Version";
             this.textBox_Version.Size = new System.Drawing.Size(124, 20);
             this.textBox_Version.TabIndex = 12;
@@ -214,7 +215,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(141, 307);
+            this.label1.Location = new System.Drawing.Point(141, 324);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(59, 13);
             this.label1.TabIndex = 13;
@@ -223,7 +224,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(9, 307);
+            this.label2.Location = new System.Drawing.Point(9, 324);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(44, 13);
             this.label2.TabIndex = 14;
@@ -232,7 +233,7 @@
             // label_apptitle
             // 
             this.label_apptitle.AutoSize = true;
-            this.label_apptitle.Location = new System.Drawing.Point(9, 346);
+            this.label_apptitle.Location = new System.Drawing.Point(9, 363);
             this.label_apptitle.Name = "label_apptitle";
             this.label_apptitle.Size = new System.Drawing.Size(52, 13);
             this.label_apptitle.TabIndex = 15;
@@ -241,7 +242,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(9, 385);
+            this.label4.Location = new System.Drawing.Point(9, 402);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(53, 13);
             this.label4.TabIndex = 16;
@@ -250,7 +251,7 @@
             // label_nro
             // 
             this.label_nro.AutoSize = true;
-            this.label_nro.Location = new System.Drawing.Point(9, 424);
+            this.label_nro.Location = new System.Drawing.Point(9, 441);
             this.label_nro.Name = "label_nro";
             this.label_nro.Size = new System.Drawing.Size(59, 13);
             this.label_nro.TabIndex = 17;
@@ -259,7 +260,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(9, 463);
+            this.label6.Location = new System.Drawing.Point(9, 480);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(57, 13);
             this.label6.TabIndex = 18;
@@ -268,7 +269,7 @@
             // textBox_RomPath
             // 
             this.textBox_RomPath.Enabled = false;
-            this.textBox_RomPath.Location = new System.Drawing.Point(12, 479);
+            this.textBox_RomPath.Location = new System.Drawing.Point(12, 496);
             this.textBox_RomPath.Name = "textBox_RomPath";
             this.textBox_RomPath.Size = new System.Drawing.Size(256, 20);
             this.textBox_RomPath.TabIndex = 19;
@@ -279,7 +280,7 @@
             this.comboBox_retro.Enabled = false;
             this.comboBox_retro.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox_retro.FormattingEnabled = true;
-            this.comboBox_retro.Location = new System.Drawing.Point(189, 440);
+            this.comboBox_retro.Location = new System.Drawing.Point(189, 457);
             this.comboBox_retro.Name = "comboBox_retro";
             this.comboBox_retro.Size = new System.Drawing.Size(79, 20);
             this.comboBox_retro.TabIndex = 20;
@@ -290,7 +291,7 @@
             // textBox_Path
             // 
             this.textBox_Path.Enabled = false;
-            this.textBox_Path.Location = new System.Drawing.Point(12, 440);
+            this.textBox_Path.Location = new System.Drawing.Point(12, 457);
             this.textBox_Path.Name = "textBox_Path";
             this.textBox_Path.Size = new System.Drawing.Size(168, 20);
             this.textBox_Path.TabIndex = 21;
@@ -300,7 +301,7 @@
             // 
             // button_explore
             // 
-            this.button_explore.Location = new System.Drawing.Point(101, 505);
+            this.button_explore.Location = new System.Drawing.Point(101, 522);
             this.button_explore.Name = "button_explore";
             this.button_explore.Size = new System.Drawing.Size(79, 23);
             this.button_explore.TabIndex = 22;
@@ -311,7 +312,7 @@
             // 
             // button_open
             // 
-            this.button_open.Location = new System.Drawing.Point(12, 505);
+            this.button_open.Location = new System.Drawing.Point(12, 522);
             this.button_open.Name = "button_open";
             this.button_open.Size = new System.Drawing.Size(79, 23);
             this.button_open.TabIndex = 6;
@@ -320,12 +321,25 @@
             this.button_open.UseVisualStyleBackColor = true;
             this.button_open.Click += new System.EventHandler(this.button_open_Click);
             // 
+            // checkBox_licence
+            // 
+            this.checkBox_licence.AutoSize = true;
+            this.checkBox_licence.Location = new System.Drawing.Point(12, 306);
+            this.checkBox_licence.Name = "checkBox_licence";
+            this.checkBox_licence.Size = new System.Drawing.Size(85, 17);
+            this.checkBox_licence.TabIndex = 23;
+            this.checkBox_licence.Text = "Licenced By";
+            this.toolTip1.SetToolTip(this.checkBox_licence, "Check to change \"Licenced By\" to \"Distributed By\" in NRO forwarder");
+            this.checkBox_licence.UseVisualStyleBackColor = true;
+            this.checkBox_licence.CheckedChanged += new System.EventHandler(this.checkBox_licence_CheckedChanged);
+            // 
             // MainMenu
             // 
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(280, 538);
+            this.ClientSize = new System.Drawing.Size(280, 557);
+            this.Controls.Add(this.checkBox_licence);
             this.Controls.Add(this.button_explore);
             this.Controls.Add(this.textBox_Path);
             this.Controls.Add(this.comboBox_retro);
@@ -390,6 +404,7 @@
         private System.Windows.Forms.ToolStripMenuItem saveImageToolStripMenuItem;
         private System.Windows.Forms.Button button_explore;
         private System.Windows.Forms.Button button_open;
+        private System.Windows.Forms.CheckBox checkBox_licence;
     }
 }
 

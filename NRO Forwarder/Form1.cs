@@ -490,6 +490,19 @@ namespace NRO_Forwarder
                 ReplaceData(file, pos2, patch);
                 //
 
+                if (checkBox_licence.Checked)
+                {
+                    pos = 12528; //Change Licence info to Distributed By (0x30F0)
+                    byte[] licence = { 0x01 };
+                    ReplaceData(file, pos, licence);
+                }
+                else
+                {
+                    pos = 12528; //Change Licence info to Licenced By (0x30F0)
+                    byte[] licence = { 0x00 };
+                    ReplaceData(file, pos, licence);
+                }
+
                 if (checkBox_Screeshot.Checked)
                 {
                     pos = 12340; //Screenshots Enable (0x3034)
@@ -720,6 +733,18 @@ namespace NRO_Forwarder
             else
             {
                 MessageBox.Show("Cant'find " + file, "Oops"); //Atmosphere pre-1.8.0
+            }
+        }
+
+        private void checkBox_licence_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox_licence.Checked)
+            {
+                checkBox_licence.Text = "Distributed By";
+            }
+            else
+            {
+                checkBox_licence.Text = "Licenced By";
             }
         }
     }
