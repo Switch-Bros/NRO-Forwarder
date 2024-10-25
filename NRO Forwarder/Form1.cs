@@ -54,6 +54,14 @@ namespace NRO_Forwarder
             pictureBox1.BackgroundImage.Save(iconpath); //always set the default icon
         }
 
+        protected override void OnPaintBackground(PaintEventArgs e)
+        {
+            using (LinearGradientBrush brush = new LinearGradientBrush(this.ClientRectangle, Color.White, Color.FromArgb(224, 224, 224, 244), 90F))
+            {
+                e.Graphics.FillRectangle(brush, this.ClientRectangle);
+            }
+        }
+
         private bool GetFilename(out string filename, DragEventArgs e)
         {
             bool ret = false;
