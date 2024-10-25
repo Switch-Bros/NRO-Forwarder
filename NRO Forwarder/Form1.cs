@@ -471,6 +471,7 @@ namespace NRO_Forwarder
                 String file = "Tools/control/control.nacp";
 
                 //create new blank control.nacp
+                /*
                 byte[] newcontrol = { 0x00 };
                 Array.Resize(ref newcontrol, newcontrol.Length + 16383);
                 using (FileStream fileStream = new FileStream(file, FileMode.Create))
@@ -480,6 +481,7 @@ namespace NRO_Forwarder
                         fileStream.WriteByte(newcontrol[q]);
                     }
                 }
+                */
                 //PlayLogQueryCapability + PlayLogPolicy patches
                 int pos1 = 12343;
                 int pos2 = 12816;
@@ -656,12 +658,36 @@ namespace NRO_Forwarder
 
         private void button_Generate_KeyDown(object sender, KeyEventArgs e)
         {
+            /*
+            Debug Flags - Valid Flags are
+            0x00
+            "allow_debug": false,
+            "force_debug": false,
+            "force_debug_prod": false
+            
+            0x02
+            "allow_debug": true,
+            "force_debug": false,
+            "force_debug_prod": false
+            
+            0x04
+            "allow_debug": false,
+            "force_debug": false,
+            "force_debug_prod": true
+            
+            0x08
+            "allow_debug": false,
+            "force_debug": true,
+            "force_debug_prod": false
+            */
+
             String file = "Tools/exefs/main.npdm";
             int pos1 = 818; //(0x332)
             int pos2 = 1010; //(0x3F2)
-            byte[] patch = { 0x08 };
-            byte[] patch2 = { 0x06 };
+            byte[] patch = { 0x00 };
+            byte[] patch2 = { 0x02 };
             byte[] patch3 = { 0x04 };
+            byte[] patch4 = { 0x08 };
             string info = "main.npdm Patched at 0x332 + 0x3F2";
 
             if (File.Exists("Tools/exefs/main.npdm"))
@@ -672,20 +698,22 @@ namespace NRO_Forwarder
                     case Keys.Z:
                         ReplaceData(file, pos1, patch);
                         ReplaceData(file, pos2, patch);
-                        MessageBox.Show("0x08", info); //force_debug enabled
+                        MessageBox.Show("no debugs enabled", info); //no debugs enabled
                         break;
                     case Keys.X:
                         ReplaceData(file, pos1, patch2);
                         ReplaceData(file, pos2, patch2);
-                        MessageBox.Show("0x06", info); //Atmosphere pre-1.8.0
+                        MessageBox.Show("Allow debug enabled", info); //Allow debug
                         break;
                     case Keys.C:
                         ReplaceData(file, pos1, patch3);
                         ReplaceData(file, pos2, patch3);
-                        MessageBox.Show("0x04", info); //All version compatible
+                        MessageBox.Show("force_debug_prod enabled", info); //force_debug_prod
                         break;
                     case Keys.V:
-                        //
+                        ReplaceData(file, pos1, patch3);
+                        ReplaceData(file, pos2, patch3);
+                        MessageBox.Show("force_debug enabled", info); //force_debug
                         break;
                 }
             }
