@@ -41,6 +41,14 @@ namespace NRO_Forwarder
             checkBox1_Video.Checked = true;
             checkBox_profile.Checked = true;
             checkBox_Screeshot.Checked = true;
+            if (!Directory.Exists("Tools/control"))
+            {
+                Directory.CreateDirectory("Tools/control");
+            }
+            if (!Directory.Exists("Tools/romfs"))
+            {
+                Directory.CreateDirectory("Tools/romfs");
+            }
             String iconpath = "Tools/control/icon_AmericanEnglish.dat";
             pictureBox1.BackgroundImage.Save(iconpath); //always set the default icon
         }
@@ -470,8 +478,7 @@ namespace NRO_Forwarder
                 int pos = 0;
                 String file = "Tools/control/control.nacp";
 
-                //create new blank control.nacp
-                /*
+                //create new blank control.nacp               
                 byte[] newcontrol = { 0x00 };
                 Array.Resize(ref newcontrol, newcontrol.Length + 16383);
                 using (FileStream fileStream = new FileStream(file, FileMode.Create))
@@ -481,7 +488,7 @@ namespace NRO_Forwarder
                         fileStream.WriteByte(newcontrol[q]);
                     }
                 }
-                */
+                
                 //PlayLogQueryCapability + PlayLogPolicy patches
                 int pos1 = 12343;
                 int pos2 = 12816;
