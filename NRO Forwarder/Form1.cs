@@ -478,6 +478,12 @@ namespace NRO_Forwarder
                 int pos = 0;
                 String file = "Tools/control/control.nacp";
 
+                //we better check title id is the correct length
+                if (titleid.Length != 16)
+                {
+                    titlegen();
+                }
+
                 //create new blank control.nacp               
                 byte[] newcontrol = { 0x00 };
                 Array.Resize(ref newcontrol, newcontrol.Length + 16383);
@@ -566,11 +572,6 @@ namespace NRO_Forwarder
                     //Lets grab the image from the picturebox
                     pictureBox1.BackgroundImage.Save(iconpath);
                 }
-
-                //Fix title ID if user didn't make the first char zero
-                string check = textBox_TIT.Text;
-                String x = ReplaceAtIndex(0, '0', check);
-                textBox_TIT.Text = x;
 
                 //Write version string
                 pos = 12384; //3060 (0x10) - Display version
@@ -667,13 +668,26 @@ namespace NRO_Forwarder
 
         private void textBox_TIT_TextChanged(object sender, EventArgs e)
         {
-            int i = textBox_TIT.Text.Length;
-            if (i >= 16)
+            string check = textBox_TIT.Text;
+            char[] ch = check.ToCharArray();
+            if (check.Length == 0)
             {
-                string check = textBox_TIT.Text;
-                String x = ReplaceAtIndex(0, '0', check);
-                textBox_TIT.Text = x;
+                check = "01";
             }
+
+            if (ch.Length >=16)
+            {
+                if (ch[0] != '0')
+                {
+                    ch[0] = '0';
+                }
+                if (ch[1] != '1')
+                {
+                    ch[1] = '1';
+                }
+            }
+            string newstring = new string(ch);
+            textBox_TIT.Text = newstring.ToUpper();
         }
 
         private void button_Generate_KeyDown(object sender, KeyEventArgs e)
