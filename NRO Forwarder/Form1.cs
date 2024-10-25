@@ -12,6 +12,7 @@ using System.Drawing.Imaging;
 using System.Diagnostics;
 using System.Text;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Collections;
 
 namespace NRO_Forwarder
 {
@@ -469,6 +470,24 @@ namespace NRO_Forwarder
                 int pos = 0;
                 String file = "Tools/control/control.nacp";
 
+                //create new blank control.nacp
+                byte[] newcontrol = { 0x00 };
+                Array.Resize(ref newcontrol, newcontrol.Length + 16383);
+                using (FileStream fileStream = new FileStream(file, FileMode.Create))
+                {
+                    for (int q = 0; q < newcontrol.Length; q++)
+                    {
+                        fileStream.WriteByte(newcontrol[q]);
+                    }
+                }
+                //PlayLogQueryCapability + PlayLogPolicy patches
+                int pos1 = 12343;
+                int pos2 = 12816;
+                byte[] patch = { 0x02 };
+                ReplaceData(file, pos1, patch);
+                ReplaceData(file, pos2, patch);
+                //
+
                 if (checkBox_Screeshot.Checked)
                 {
                     pos = 12340; //Screenshots Enable (0x3034)
@@ -664,6 +683,9 @@ namespace NRO_Forwarder
                         ReplaceData(file, pos1, patch3);
                         ReplaceData(file, pos2, patch3);
                         MessageBox.Show("0x04", info); //All version compatible
+                        break;
+                    case Keys.V:
+                        //
                         break;
                 }
             }
