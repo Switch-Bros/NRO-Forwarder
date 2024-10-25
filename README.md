@@ -32,8 +32,8 @@ NRO icons can be saved by right clicking on the picture box and selecting "Save 
 Clicking the Generate button and moving the mouse away from it, will select that button without making the forwader,
 you can then press either the "Z", "X", "C" buttons on your keyboard to patch the debug flags in the main.npdm file.
 
-For people using new 19.0.x firmware, the default value is "C" (patched bytes to 0x04), this sets the correct debug flag.
-For people using the older 18.0.x firmware or below, if using the 0x04 flag doesn't work, try using "X" first, then "Z".
+For people using new 19.0.x firmware, the default value is "Z" (patched bytes to 0x08), this sets the correct debug flag.
+For people using the older 18.0.x firmware or below, try using the 0x04 "C" flag, if that doesn't work, try using 0x06 "X" flag.
 
 ## Hackbrewpack
 This has been modified from the original source, it has had the extra debug flag values added to make it generate compatible
