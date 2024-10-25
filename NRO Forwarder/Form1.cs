@@ -711,8 +711,8 @@ namespace NRO_Forwarder
                         MessageBox.Show("force_debug_prod enabled", info); //force_debug_prod
                         break;
                     case Keys.V:
-                        ReplaceData(file, pos1, patch3);
-                        ReplaceData(file, pos2, patch3);
+                        ReplaceData(file, pos1, patch4);
+                        ReplaceData(file, pos2, patch4);
                         MessageBox.Show("force_debug enabled", info); //force_debug
                         break;
                 }

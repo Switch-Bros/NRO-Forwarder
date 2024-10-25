@@ -7,7 +7,7 @@ You will need a pc with Visual Studio 2022. You also need to create a folder cal
 ![Screenshot](https://i.imgur.com/AhfXb5q.png)
 
 ## How to use guide
-On the main picture box you can drag a graphics file, supported formats are  png,jpg,jpeg,tif,bmp,gif
+On the main picture box you can drag a graphics file, supported formats are png, jpg, jpeg, tif, bmp, gif.
 A new graphics file will be created automatically which will be a 256x256 pixel jpg.
 
 You can also drag an existing nro file onto this, information from that will auto populate the programs input boxes
@@ -28,12 +28,14 @@ paths to fill in, one for the nro file and one for the game/config file.
 ## Saving Icons
 NRO icons can be saved by right clicking on the picture box and selecting "Save Image" from the dropdown menu.
 
-## Advanced Hidden Feature
+## Advanced Hidden Feature (Fix Forwarders for certain firmware and AMS versions)
 Clicking the Generate button and moving the mouse away from it, will select that button without making the forwader,
-you can then press either the "Z", "X", "C" buttons on your keyboard to patch the debug flags in the main.npdm file.
+you can then press either the "Z", "X", "C", "V" buttons on your keyboard to patch the debug flags in the main.npdm file.
 
-For people using new 19.0.x firmware, the default value is "Z" (patched bytes to 0x08), this sets the correct debug flag.
-For people using the older 18.0.x firmware or below, try using the 0x04 "C" flag, if that doesn't work, try using 0x06 "X" flag.
+Z = no debugs enabled
+X = Allow debug
+C = force_debug_prod (Use for firmware 19.0.x and + AMS 1.8.x)
+V = force_debug (Use for firmware 18.0.x and below and < AMS 1.8.x)
 
 ## Hackbrewpack
 This has been modified from the original source, it has had the extra debug flag values added to make it generate compatible
