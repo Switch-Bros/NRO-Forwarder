@@ -13,6 +13,7 @@ using System.Diagnostics;
 using System.Text;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Collections;
+using System.ComponentModel;
 
 namespace NRO_Forwarder
 {
@@ -483,7 +484,6 @@ namespace NRO_Forwarder
                 {
                     titlegen();
                 }
-
                 //create new blank control.nacp               
                 byte[] newcontrol = { 0x00 };
                 Array.Resize(ref newcontrol, newcontrol.Length + 16383);
@@ -494,7 +494,13 @@ namespace NRO_Forwarder
                         fileStream.WriteByte(newcontrol[q]);
                     }
                 }
-                
+
+                //patch main.npdm with correct ID
+                int npdmloc = 848;
+                byte[] npdm = Encoding.ASCII.GetBytes(titleid);
+                ReplaceData("Tools/exefs/main.npdm", npdmloc, npdm);
+
+
                 //PlayLogQueryCapability + PlayLogPolicy patches
                 int pos1 = 12343;
                 int pos2 = 12816;
