@@ -88,6 +88,6 @@ as the good ones that are shown above.
 ## Greetings and Thanks.
 Greetings to impeeza, may the force be with you!
 The-4n for hacbrepack source code.
-[Switchbrew team](https://switchbrew.org/wiki/Main_Page) for various information on file headers.
-[cristianmiranda](https://github.com/cristianmiranda/RetroArchROMForwarder) for information about RetroArch forwarders.
+[Switchbrew team](https://switchbrew.org/wiki/Main_Page) for various information on file headers.  
+[cristianmiranda](https://github.com/cristianmiranda/RetroArchROMForwarder) for information about RetroArch forwarders.  
 [Skywalker25](https://github.com/Skywalker25/Forwarder-Mod) for source code for making forwarders.
