@@ -594,8 +594,9 @@ namespace NRO_Forwarder
                 //Write version string
                 pos = 12384; //3060 (0x10) - Display version
                 byte[] data = Encoding.ASCII.GetBytes(version); //convert version to byte array
-                byte[] versionblank = { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
-                ReplaceData(file, pos, versionblank); //Reset Version
+                //if we don't create a new control.nacp file above,uncomment the two next lines.
+                //byte[] versionblank = { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
+                //ReplaceData(file, pos, versionblank); //Reset Version
                 ReplaceData(file, pos, data);//Write New Version String
 
                 //cleanup old backup files and remove old nro's
@@ -703,13 +704,21 @@ namespace NRO_Forwarder
                 {
                     ch[1] = '1';
                 }
-                if (ch[2] != '0')
+                if (ch[12] != '0')
                 {
-                    ch[2] = '0';
+                    ch[12] = '0';
                 }
-                if (ch[3] != '0')
+                if (ch[13] != '0')
                 {
-                    ch[3] = '0';
+                    ch[13] = '0';
+                }
+                if (ch[14] != '0')
+                {
+                    ch[14] = '0';
+                }
+                if (ch[15] != '0')
+                {
+                    ch[15] = '0';
                 }
             }
             string newstring = new string(ch);
