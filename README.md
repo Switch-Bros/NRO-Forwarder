@@ -51,11 +51,11 @@ PlayLogQueryCapability (0x3210) is also set to 0x02 (Allow all titles). This all
 This modded control.nacp is also blanked so that NRO forwarders exit properly and show the start logo's properly.
 
 ## Alternatives to this program
-[NSP Forwarder Generator](https://nsp-forwarder-git-fork-masagrator-main-tootallteam.vercel.app/)
+[NSP Forwarder Generator](https://nsp-forwarder-git-fork-masagrator-main-tootallteam.vercel.app/)  
 [NRO Editor](https://nro-editor-git-fork-masagrator-main-tootallteam.vercel.app/)
 
 ## Information about NRO files and NACP
-[SwitchBrew Wiki NRO](https://switchbrew.org/wiki/NRO)
+[SwitchBrew Wiki NRO](https://switchbrew.org/wiki/NRO)  
 [SwitchBrew Wiki NCAP](https://switchbrew.org/wiki/NACP)
 
 ## Blank Icons in Tinleaf
