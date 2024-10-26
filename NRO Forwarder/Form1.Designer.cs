@@ -67,7 +67,7 @@
             this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
             this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBox1.ContextMenuStrip = this.contextMenuStrip1;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
+            this.pictureBox1.Location = new System.Drawing.Point(4, 4);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(256, 256);
             this.pictureBox1.TabIndex = 0;
@@ -109,7 +109,7 @@
             // checkBox_Retro
             // 
             this.checkBox_Retro.AutoSize = true;
-            this.checkBox_Retro.Location = new System.Drawing.Point(12, 274);
+            this.checkBox_Retro.Location = new System.Drawing.Point(4, 263);
             this.checkBox_Retro.Name = "checkBox_Retro";
             this.checkBox_Retro.Size = new System.Drawing.Size(124, 17);
             this.checkBox_Retro.TabIndex = 1;
@@ -122,7 +122,7 @@
             // checkBox_Screeshot
             // 
             this.checkBox_Screeshot.AutoSize = true;
-            this.checkBox_Screeshot.Location = new System.Drawing.Point(12, 290);
+            this.checkBox_Screeshot.Location = new System.Drawing.Point(4, 279);
             this.checkBox_Screeshot.Name = "checkBox_Screeshot";
             this.checkBox_Screeshot.Size = new System.Drawing.Size(121, 17);
             this.checkBox_Screeshot.TabIndex = 2;
@@ -133,7 +133,7 @@
             // checkBox1_Video
             // 
             this.checkBox1_Video.AutoSize = true;
-            this.checkBox1_Video.Location = new System.Drawing.Point(144, 274);
+            this.checkBox1_Video.Location = new System.Drawing.Point(134, 263);
             this.checkBox1_Video.Name = "checkBox1_Video";
             this.checkBox1_Video.Size = new System.Drawing.Size(129, 17);
             this.checkBox1_Video.TabIndex = 3;
@@ -144,7 +144,7 @@
             // checkBox_profile
             // 
             this.checkBox_profile.AutoSize = true;
-            this.checkBox_profile.Location = new System.Drawing.Point(144, 290);
+            this.checkBox_profile.Location = new System.Drawing.Point(134, 279);
             this.checkBox_profile.Name = "checkBox_profile";
             this.checkBox_profile.Size = new System.Drawing.Size(91, 17);
             this.checkBox_profile.TabIndex = 4;
@@ -154,9 +154,9 @@
             // 
             // button_Generate
             // 
-            this.button_Generate.Location = new System.Drawing.Point(189, 522);
+            this.button_Generate.Location = new System.Drawing.Point(178, 488);
             this.button_Generate.Name = "button_Generate";
-            this.button_Generate.Size = new System.Drawing.Size(79, 23);
+            this.button_Generate.Size = new System.Drawing.Size(82, 20);
             this.button_Generate.TabIndex = 5;
             this.button_Generate.Text = "Generate NSP";
             this.toolTip1.SetToolTip(this.button_Generate, "Generate forwarder NSP");
@@ -166,7 +166,7 @@
             // 
             // textBox_TIT
             // 
-            this.textBox_TIT.Location = new System.Drawing.Point(12, 340);
+            this.textBox_TIT.Location = new System.Drawing.Point(4, 325);
             this.textBox_TIT.Name = "textBox_TIT";
             this.textBox_TIT.Size = new System.Drawing.Size(124, 20);
             this.textBox_TIT.TabIndex = 7;
@@ -177,7 +177,7 @@
             // 
             // textBox_AppTitle
             // 
-            this.textBox_AppTitle.Location = new System.Drawing.Point(12, 379);
+            this.textBox_AppTitle.Location = new System.Drawing.Point(4, 360);
             this.textBox_AppTitle.Name = "textBox_AppTitle";
             this.textBox_AppTitle.Size = new System.Drawing.Size(256, 20);
             this.textBox_AppTitle.TabIndex = 9;
@@ -186,7 +186,7 @@
             // 
             // textBox_publisher
             // 
-            this.textBox_publisher.Location = new System.Drawing.Point(12, 418);
+            this.textBox_publisher.Location = new System.Drawing.Point(4, 395);
             this.textBox_publisher.Name = "textBox_publisher";
             this.textBox_publisher.Size = new System.Drawing.Size(256, 20);
             this.textBox_publisher.TabIndex = 10;
@@ -195,7 +195,7 @@
             // 
             // textBox_nropath
             // 
-            this.textBox_nropath.Location = new System.Drawing.Point(12, 457);
+            this.textBox_nropath.Location = new System.Drawing.Point(4, 430);
             this.textBox_nropath.Name = "textBox_nropath";
             this.textBox_nropath.Size = new System.Drawing.Size(256, 20);
             this.textBox_nropath.TabIndex = 11;
@@ -204,7 +204,7 @@
             // 
             // textBox_Version
             // 
-            this.textBox_Version.Location = new System.Drawing.Point(144, 340);
+            this.textBox_Version.Location = new System.Drawing.Point(134, 325);
             this.textBox_Version.Name = "textBox_Version";
             this.textBox_Version.Size = new System.Drawing.Size(124, 20);
             this.textBox_Version.TabIndex = 12;
@@ -215,7 +215,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(141, 324);
+            this.label1.Location = new System.Drawing.Point(131, 311);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(59, 13);
             this.label1.TabIndex = 13;
@@ -224,7 +224,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(9, 324);
+            this.label2.Location = new System.Drawing.Point(1, 311);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(44, 13);
             this.label2.TabIndex = 14;
@@ -233,7 +233,7 @@
             // label_apptitle
             // 
             this.label_apptitle.AutoSize = true;
-            this.label_apptitle.Location = new System.Drawing.Point(9, 363);
+            this.label_apptitle.Location = new System.Drawing.Point(1, 346);
             this.label_apptitle.Name = "label_apptitle";
             this.label_apptitle.Size = new System.Drawing.Size(52, 13);
             this.label_apptitle.TabIndex = 15;
@@ -242,7 +242,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(9, 402);
+            this.label4.Location = new System.Drawing.Point(1, 381);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(53, 13);
             this.label4.TabIndex = 16;
@@ -251,7 +251,7 @@
             // label_nro
             // 
             this.label_nro.AutoSize = true;
-            this.label_nro.Location = new System.Drawing.Point(9, 441);
+            this.label_nro.Location = new System.Drawing.Point(1, 416);
             this.label_nro.Name = "label_nro";
             this.label_nro.Size = new System.Drawing.Size(59, 13);
             this.label_nro.TabIndex = 17;
@@ -260,7 +260,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(9, 480);
+            this.label6.Location = new System.Drawing.Point(1, 451);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(57, 13);
             this.label6.TabIndex = 18;
@@ -269,7 +269,7 @@
             // textBox_RomPath
             // 
             this.textBox_RomPath.Enabled = false;
-            this.textBox_RomPath.Location = new System.Drawing.Point(12, 496);
+            this.textBox_RomPath.Location = new System.Drawing.Point(4, 465);
             this.textBox_RomPath.Name = "textBox_RomPath";
             this.textBox_RomPath.Size = new System.Drawing.Size(256, 20);
             this.textBox_RomPath.TabIndex = 19;
@@ -280,9 +280,9 @@
             this.comboBox_retro.Enabled = false;
             this.comboBox_retro.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox_retro.FormattingEnabled = true;
-            this.comboBox_retro.Location = new System.Drawing.Point(189, 457);
+            this.comboBox_retro.Location = new System.Drawing.Point(178, 430);
             this.comboBox_retro.Name = "comboBox_retro";
-            this.comboBox_retro.Size = new System.Drawing.Size(79, 20);
+            this.comboBox_retro.Size = new System.Drawing.Size(82, 20);
             this.comboBox_retro.TabIndex = 20;
             this.toolTip1.SetToolTip(this.comboBox_retro, "Select system");
             this.comboBox_retro.Visible = false;
@@ -291,9 +291,9 @@
             // textBox_Path
             // 
             this.textBox_Path.Enabled = false;
-            this.textBox_Path.Location = new System.Drawing.Point(12, 457);
+            this.textBox_Path.Location = new System.Drawing.Point(4, 430);
             this.textBox_Path.Name = "textBox_Path";
-            this.textBox_Path.Size = new System.Drawing.Size(168, 20);
+            this.textBox_Path.Size = new System.Drawing.Size(169, 20);
             this.textBox_Path.TabIndex = 21;
             this.textBox_Path.Text = "/switch/tinwoo/tinwoo.nro";
             this.toolTip1.SetToolTip(this.textBox_Path, "Enter the full path for the RertoArch core");
@@ -301,9 +301,9 @@
             // 
             // button_explore
             // 
-            this.button_explore.Location = new System.Drawing.Point(101, 522);
+            this.button_explore.Location = new System.Drawing.Point(91, 488);
             this.button_explore.Name = "button_explore";
-            this.button_explore.Size = new System.Drawing.Size(79, 23);
+            this.button_explore.Size = new System.Drawing.Size(82, 20);
             this.button_explore.TabIndex = 22;
             this.button_explore.Text = "Explore";
             this.toolTip1.SetToolTip(this.button_explore, "Explore program contents");
@@ -312,9 +312,9 @@
             // 
             // button_open
             // 
-            this.button_open.Location = new System.Drawing.Point(12, 522);
+            this.button_open.Location = new System.Drawing.Point(4, 488);
             this.button_open.Name = "button_open";
-            this.button_open.Size = new System.Drawing.Size(79, 23);
+            this.button_open.Size = new System.Drawing.Size(82, 20);
             this.button_open.TabIndex = 6;
             this.button_open.Text = "Alt Version";
             this.toolTip1.SetToolTip(this.button_open, "Extract NRO information");
@@ -324,7 +324,7 @@
             // checkBox_licence
             // 
             this.checkBox_licence.AutoSize = true;
-            this.checkBox_licence.Location = new System.Drawing.Point(12, 306);
+            this.checkBox_licence.Location = new System.Drawing.Point(4, 295);
             this.checkBox_licence.Name = "checkBox_licence";
             this.checkBox_licence.Size = new System.Drawing.Size(85, 17);
             this.checkBox_licence.TabIndex = 23;
@@ -339,7 +339,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(280, 557);
+            this.ClientSize = new System.Drawing.Size(264, 513);
             this.Controls.Add(this.checkBox_licence);
             this.Controls.Add(this.button_explore);
             this.Controls.Add(this.textBox_Path);

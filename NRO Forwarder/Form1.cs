@@ -54,6 +54,7 @@ namespace NRO_Forwarder
             pictureBox1.BackgroundImage.Save(iconpath); //always set the default icon
         }
 
+        
         protected override void OnPaintBackground(PaintEventArgs e)
         {
             using (LinearGradientBrush brush = new LinearGradientBrush(this.ClientRectangle, Color.White, Color.FromArgb(224, 224, 224, 244), 90F))
@@ -61,7 +62,7 @@ namespace NRO_Forwarder
                 e.Graphics.FillRectangle(brush, this.ClientRectangle);
             }
         }
-
+        
         private bool GetFilename(out string filename, DragEventArgs e)
         {
             bool ret = false;
@@ -505,8 +506,11 @@ namespace NRO_Forwarder
 
                 //patch main.npdm with correct ID
                 int npdmloc = 848;
+                int npdmloc2 = 856;
                 byte[] npdm = Encoding.ASCII.GetBytes(titleid);
+                byte[] blank = { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
                 ReplaceData("Tools/exefs/main.npdm", npdmloc, npdm);
+                ReplaceData("Tools/exefs/main.npdm", npdmloc2, blank);
 
 
                 //PlayLogQueryCapability + PlayLogPolicy patches
