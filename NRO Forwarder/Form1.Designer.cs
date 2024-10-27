@@ -319,7 +319,7 @@
             this.button_open.Text = "Alt Version";
             this.toolTip1.SetToolTip(this.button_open, "Extract NRO information");
             this.button_open.UseVisualStyleBackColor = true;
-            this.button_open.Click += new System.EventHandler(this.button_open_Click);
+            this.button_open.MouseDown += new System.Windows.Forms.MouseEventHandler(this.button_open_MouseDown);
             // 
             // checkBox_licence
             // 

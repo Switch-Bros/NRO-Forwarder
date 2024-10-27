@@ -63,7 +63,7 @@ namespace NRO_Forwarder
             }
         }
         */
-        
+
         private bool GetFilename(out string filename, DragEventArgs e)
         {
             bool ret = false;
@@ -315,11 +315,6 @@ namespace NRO_Forwarder
                     MessageBox.Show(filePath + " already exists, try using a new name!", "Try again!", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 }
             }
-        }
-
-        private void button_open_Click(object sender, EventArgs e)
-        {
-            Process.Start("explorer", "https://nsp-forwarder-git-fork-masagrator-main-tootallteam.vercel.app/?advanced");
         }
 
         private void nrostuff()
@@ -670,6 +665,7 @@ namespace NRO_Forwarder
             }
         }
 
+        //Just leave this,I might use it later
         static string ReplaceAtIndex(int i, char value, string word)
         {
             char[] letters = word.ToCharArray();
@@ -695,7 +691,7 @@ namespace NRO_Forwarder
                 check = "01";
             }
 
-            if (ch.Length >=16)
+            if (ch.Length >= 16)
             {
                 if (ch[0] != '0')
                 {
@@ -804,12 +800,26 @@ namespace NRO_Forwarder
                 checkBox_licence.Text = "Licenced By";
             }
         }
-    }
 
-    public class Item
-    {
-        public Item() { }
-        public string Value { set; get; }
-        public string Text { set; get; }
+        private void button_open_MouseDown(object sender, MouseEventArgs e)
+        {
+            switch (e.Button)
+            {
+                case MouseButtons.Left:
+                    Process.Start("explorer", "https://nsp-forwarder-git-fork-masagrator-main-tootallteam.vercel.app/?advanced");
+                    break;
+
+                case MouseButtons.Right:
+                    Process.Start("explorer", "https://nsp-forwarder.n8.io/");
+                    break;
+            }
+        }
+
+        public class Item
+        {
+            public Item() { }
+            public string Value { set; get; }
+            public string Text { set; get; }
+        }
     }
 }
