@@ -53,7 +53,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.textBox_RomPath = new System.Windows.Forms.TextBox();
             this.comboBox_retro = new System.Windows.Forms.ComboBox();
-            this.textBox_Path = new System.Windows.Forms.TextBox();
+            this.textBox_CorePath = new System.Windows.Forms.TextBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.button_explore = new System.Windows.Forms.Button();
             this.button_open = new System.Windows.Forms.Button();
@@ -274,6 +274,7 @@
             this.textBox_RomPath.Size = new System.Drawing.Size(256, 20);
             this.textBox_RomPath.TabIndex = 19;
             this.textBox_RomPath.Text = "/switch/uae4all2/conf/benefactor.conf";
+            this.toolTip1.SetToolTip(this.textBox_RomPath, "Enter RetroArch game or config path");
             // 
             // comboBox_retro
             // 
@@ -288,16 +289,16 @@
             this.comboBox_retro.Visible = false;
             this.comboBox_retro.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
-            // textBox_Path
+            // textBox_CorePath
             // 
-            this.textBox_Path.Enabled = false;
-            this.textBox_Path.Location = new System.Drawing.Point(4, 430);
-            this.textBox_Path.Name = "textBox_Path";
-            this.textBox_Path.Size = new System.Drawing.Size(169, 20);
-            this.textBox_Path.TabIndex = 21;
-            this.textBox_Path.Text = "/switch/tinwoo/tinwoo.nro";
-            this.toolTip1.SetToolTip(this.textBox_Path, "Enter the full path for the RertoArch core");
-            this.textBox_Path.Visible = false;
+            this.textBox_CorePath.Enabled = false;
+            this.textBox_CorePath.Location = new System.Drawing.Point(4, 430);
+            this.textBox_CorePath.Name = "textBox_CorePath";
+            this.textBox_CorePath.Size = new System.Drawing.Size(169, 20);
+            this.textBox_CorePath.TabIndex = 21;
+            this.textBox_CorePath.Text = "/switch/tinwoo/tinwoo.nro";
+            this.toolTip1.SetToolTip(this.textBox_CorePath, "Enter the full path for the RertoArch core");
+            this.textBox_CorePath.Visible = false;
             // 
             // button_explore
             // 
@@ -326,9 +327,9 @@
             this.checkBox_licence.AutoSize = true;
             this.checkBox_licence.Location = new System.Drawing.Point(4, 295);
             this.checkBox_licence.Name = "checkBox_licence";
-            this.checkBox_licence.Size = new System.Drawing.Size(85, 17);
+            this.checkBox_licence.Size = new System.Drawing.Size(91, 17);
             this.checkBox_licence.TabIndex = 23;
-            this.checkBox_licence.Text = "Licenced By";
+            this.checkBox_licence.Text = "Distributed By";
             this.toolTip1.SetToolTip(this.checkBox_licence, "Check to change \"Licenced By\" to \"Distributed By\" in NRO forwarder");
             this.checkBox_licence.UseVisualStyleBackColor = true;
             this.checkBox_licence.CheckedChanged += new System.EventHandler(this.checkBox_licence_CheckedChanged);
@@ -342,7 +343,7 @@
             this.ClientSize = new System.Drawing.Size(264, 513);
             this.Controls.Add(this.checkBox_licence);
             this.Controls.Add(this.button_explore);
-            this.Controls.Add(this.textBox_Path);
+            this.Controls.Add(this.textBox_CorePath);
             this.Controls.Add(this.comboBox_retro);
             this.Controls.Add(this.textBox_RomPath);
             this.Controls.Add(this.label6);
@@ -397,7 +398,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox textBox_RomPath;
         private System.Windows.Forms.ComboBox comboBox_retro;
-        private System.Windows.Forms.TextBox textBox_Path;
+        private System.Windows.Forms.TextBox textBox_CorePath;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem loadImageToolStripMenuItem;

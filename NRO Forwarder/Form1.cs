@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
@@ -133,8 +134,8 @@ namespace NRO_Forwarder
                 label_apptitle.Text = "Game Title:";
                 comboBox_retro.SelectedIndex = 12; //auto select Uae4all2 from comboxbox
                 textBox_RomPath.Enabled = true;
-                textBox_Path.Enabled = true;
-                textBox_Path.Visible = true;
+                textBox_CorePath.Enabled = true;
+                textBox_CorePath.Visible = true;
                 textBox_nropath.Visible = false;
                 comboBox_retro.Visible = true;
                 comboBox_retro.Enabled = true;
@@ -144,8 +145,8 @@ namespace NRO_Forwarder
                 label_nro.Text = "NRO Path:";
                 label_apptitle.Text = "App Title:";
                 textBox_RomPath.Enabled = false;
-                textBox_Path.Enabled = false;
-                textBox_Path.Visible = false;
+                textBox_CorePath.Enabled = false;
+                textBox_CorePath.Visible = false;
                 textBox_nropath.Visible = true;
                 comboBox_retro.Visible = false;
                 comboBox_retro.Enabled = false;
@@ -160,7 +161,7 @@ namespace NRO_Forwarder
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             string myval = comboBox_retro.SelectedValue.ToString();
-            textBox_Path.Text = myval.Replace("ID: ","");
+            textBox_CorePath.Text = myval.Replace("ID: ","");
         }
 
         private void pictureBox1_DragOver(object sender, DragEventArgs e)
@@ -466,7 +467,7 @@ namespace NRO_Forwarder
                 String titleid = textBox_TIT.Text;
                 String version = textBox_Version.Text;
                 String publisher = textBox_publisher.Text;
-                String corepath = "sdmc:" + textBox_Path.Text;
+                String corepath = "sdmc:" + textBox_CorePath.Text;
                 String nropath = "sdmc:" + textBox_nropath.Text;
                 String rompath = "sdmc:" + textBox_RomPath.Text;
                 String nextNroPath = "Tools/romfs/nextNroPath";
@@ -508,16 +509,22 @@ namespace NRO_Forwarder
                 ReplaceData(file, pos2, patch);
                 //
 
-                if (checkBox_licence.Checked)
+                if (checkBox_licence.Checked && checkBox_licence.Text == "Distributed By")
                 {
                     pos = 12528; //Change Licence info to Distributed By (0x30F0)
                     byte[] licence = { 0x01 };
                     ReplaceData(file, pos, licence);
                 }
-                else
+                else if (checkBox_licence.Checked && checkBox_licence.Text == "Licenced By")
                 {
                     pos = 12528; //Change Licence info to Licenced By (0x30F0)
                     byte[] licence = { 0x00 };
+                    ReplaceData(file, pos, licence);
+                }
+                else
+                {
+                    pos = 12528; //Change Licence info to Licenced By (0x30F0)
+                    byte[] licence = { 0x02 };
                     ReplaceData(file, pos, licence);
                 }
 
@@ -785,13 +792,15 @@ namespace NRO_Forwarder
 
         private void checkBox_licence_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBox_licence.Checked)
+            if (!checkBox_licence.Checked  && checkBox_licence.Text == "Distributed By")
             {
-                checkBox_licence.Text = "Distributed By";
-            }
-            else
-            {
+                checkBox_licence.Checked = true;
                 checkBox_licence.Text = "Licenced By";
+            }
+            else if (checkBox_licence.Checked && checkBox_licence.Text == "Licenced By")
+            {
+                checkBox_licence.Checked = true;
+                checkBox_licence.Text = "Distributed By";
             }
         }
 
