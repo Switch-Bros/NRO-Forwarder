@@ -160,7 +160,7 @@ namespace NRO_Forwarder
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             string myval = comboBox_retro.SelectedValue.ToString();
-            textBox_Path.Text = myval;
+            textBox_Path.Text = myval.Replace("ID: ","");
         }
 
         private void pictureBox1_DragOver(object sender, DragEventArgs e)
