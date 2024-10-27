@@ -317,7 +317,7 @@
             this.button_open.Size = new System.Drawing.Size(82, 20);
             this.button_open.TabIndex = 6;
             this.button_open.Text = "Alt Version";
-            this.toolTip1.SetToolTip(this.button_open, "Extract NRO information");
+            this.toolTip1.SetToolTip(this.button_open, "Open NRO forwarder creation website");
             this.button_open.UseVisualStyleBackColor = true;
             this.button_open.MouseDown += new System.Windows.Forms.MouseEventHandler(this.button_open_MouseDown);
             // 
