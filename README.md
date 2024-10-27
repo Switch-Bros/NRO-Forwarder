@@ -58,39 +58,6 @@ This modded control.nacp is also blanked so that NRO forwarders exit properly an
 [SwitchBrew Wiki NRO](https://switchbrew.org/wiki/NRO)  
 [SwitchBrew Wiki NCAP](https://switchbrew.org/wiki/NACP)
 
-## Blank Icons in Tinleaf
-For some reason, forwarders with certain TitleID's fail to show up in Tinfoil properly, this software is closed source
-so it's unknown why this happens. Example TitleID's that are good and icons display properly.
-
-01002F004DC362B8 - good  
-01002FAF4DC362B8 - good  
-01000673D9B4E5B2 - good  
-010042f5d9e94179 - good  
-0100C7223EBA0000 - good  
-010E3D7237302002 - good  
-01AAC7223EBA0000 - good  
-0111111110000000 - good  
-0111111110000056 - good  
-0100111110000054 - good  
-0100111220000054 - good  
-011C465558FF81E3 - good  
-0100644B52040000 - good  
-0100FA789CA60000 - good  
-0100977A80840000 - good  
-01001158B3280000 - good  
-01003D7237302002 - good  
-
-These TitleID's in Tinfoil make the icons not show properly.
-
-0100111110005656 - Bad  
-010014BE1EABEABB - Bad  
-0100224D3D5371A6 - bad  
-01003525F08110D1 - bad  
-010090C074AF3624 - bad  
-0100D208640175FF - bad  
-
-For this reason, this forwarder tool will generate forwarders with the last 4 hex numbers in the TitleID as zeros as this seems to work fine.
-
 ## Greetings and Thanks.
 Greetings to impeeza, may the force be with you!  
 The-4n for hacbrepack source code.  

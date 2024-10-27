@@ -14,6 +14,7 @@ using System.Text;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Collections;
 using System.ComponentModel;
+using static System.Windows.Forms.AxHost;
 
 namespace NRO_Forwarder
 {
@@ -684,7 +685,7 @@ namespace NRO_Forwarder
 
         private void textBox_TIT_TextChanged(object sender, EventArgs e)
         {
-            string check = textBox_TIT.Text;
+            string check = textBox_TIT.Text.ToUpper();
             char[] ch = check.ToCharArray();
             if (check.Length == 0)
             {
@@ -701,9 +702,12 @@ namespace NRO_Forwarder
                 {
                     ch[1] = '1';
                 }
-                if (ch[12] != '0')
+                if (ch[12] == '1' || ch[12] == '3' || ch[12] == '5' || ch[12] == '7' || ch[12] == '9' || ch[12] == 'B' || ch[12] == 'D' || ch[12] == 'F')
                 {
-                    ch[12] = '0';
+                    byte[] blank = { 0x30, 0x32, 0x34, 0x36, 0x38, 0x41, 0x43, 0x45 };
+                    Random random = new Random();
+                    int chosen = random.Next(0, blank.Length);
+                    ch[12] = (char)blank[chosen];
                 }
                 if (ch[13] != '0')
                 {
@@ -719,7 +723,7 @@ namespace NRO_Forwarder
                 }
             }
             string newstring = new string(ch);
-            textBox_TIT.Text = newstring.ToUpper();
+            textBox_TIT.Text = newstring;
         }
 
         private void button_Generate_KeyDown(object sender, KeyEventArgs e)
