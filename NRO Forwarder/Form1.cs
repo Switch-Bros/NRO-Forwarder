@@ -54,7 +54,7 @@ namespace NRO_Forwarder
             pictureBox1.BackgroundImage.Save(iconpath); //always set the default icon
         }
 
-        
+        /*
         protected override void OnPaintBackground(PaintEventArgs e)
         {
             using (LinearGradientBrush brush = new LinearGradientBrush(this.ClientRectangle, Color.White, Color.FromArgb(224, 224, 224, 244), 90F))
@@ -62,6 +62,7 @@ namespace NRO_Forwarder
                 e.Graphics.FillRectangle(brush, this.ClientRectangle);
             }
         }
+        */
         
         private bool GetFilename(out string filename, DragEventArgs e)
         {
@@ -549,7 +550,7 @@ namespace NRO_Forwarder
                 if (checkBox1_Video.Checked)
                 {
 
-                    pos = 12341; //Video (0x3035)
+                    pos = 12341; //Video capture (0x3035)
                     byte[] VideoEnable = { 0x02 }; //auto
                     ReplaceData(file, pos, VideoEnable);
                 }
@@ -561,7 +562,7 @@ namespace NRO_Forwarder
                 }
                 if (checkBox_profile.Checked)
                 {
-                    pos = 12325; //profile Enable (0x3025)
+                    pos = 12325; //profile Enable (0x3025) //StartupUserAccount
                     byte[] ProfileEnable = { 0x01 };
                     ReplaceData(file, pos, ProfileEnable);
                 }
