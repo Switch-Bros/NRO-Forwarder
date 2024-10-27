@@ -4,7 +4,7 @@ PC Homebrew for creating NRO forwarders for the Nintendo Switch.
 # Building
 You will need a pc with Visual Studio 2022. You also need to create a folder called Tools (with the relevant files, (which are contained in the release page) in the build folder or it will not run).
 
-![RetroScreenshot](https://i.imgur.com/52U3biY.png)![Screenshot2](https://i.imgur.com/pymJncf.png)
+![RetroScreenshot](https://i.imgur.com/52U3biY.png)![Screenshot](https://i.imgur.com/pymJncf.png)
 
 ## How to use guide
 On the main picture box you can drag a graphics file, supported formats are png, jpg, jpeg, tif, bmp, gif.
@@ -60,7 +60,7 @@ This modded control.nacp is also blanked so that NRO forwarders exit properly an
 
 ## Greetings and Thanks.
 Greetings to impeeza, may the force be with you!  
-The-4n for hacbrepack source code.  
+The-4n for hacbrewpack source code.  
 [Switchbrew team](https://switchbrew.org/wiki/Main_Page) for various information on file headers.  
 [cristianmiranda](https://github.com/cristianmiranda/RetroArchROMForwarder) for information about RetroArch forwarders.  
 [Skywalker25](https://github.com/Skywalker25/Forwarder-Mod) for source code for making forwarders.

@@ -248,6 +248,7 @@ namespace NRO_Forwarder
                 }
             }
 
+            image.Dispose(); //release icon.png once loaded into the picturebox so we can save without crashing the app
             return (destImage);
         }
 
@@ -302,19 +303,12 @@ namespace NRO_Forwarder
             string filePath = "";
             saveFileDialog.FileName = Path.GetFileName("icon.jpg");
             saveFileDialog.Filter = "JPG (*.jpg)|*.jpg";
-            saveFileDialog.OverwritePrompt = false;
+            saveFileDialog.OverwritePrompt = true;
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
                 filePath = saveFileDialog.FileName;
-                if (!File.Exists(filePath))
-                {
-                    pictureBox1.BackgroundImage.Save(filePath);
-                    MessageBox.Show(filePath + " icon saved!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
-                }
-                else
-                {
-                    MessageBox.Show(filePath + " already exists, try using a new name!", "Try again!", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
-                }
+                pictureBox1.BackgroundImage.Save(filePath);
+                MessageBox.Show(filePath + " icon saved!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
             }
         }
 
