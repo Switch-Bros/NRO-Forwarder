@@ -1,32 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
-using System.Linq;
-using System.Windows.Forms;
-using System.Security.Cryptography;
-using System.IO;
-using System.Threading;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
-using System.Diagnostics;
+using System.IO;
+using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using System.Collections;
-using System.ComponentModel;
-using static System.Windows.Forms.AxHost;
+using System.Threading;
+using System.Windows.Forms;
 
 namespace NRO_Forwarder
 {
     public partial class MainMenu : Form
     {
         protected bool validData;
-
         string path;
         protected Image image;
         protected Thread getImageThread;
         string filepath = "";
-        private static EncoderParameter myEncoderParameter;
 
         public MainMenu()
         {
@@ -54,16 +48,6 @@ namespace NRO_Forwarder
             String iconpath = "Tools/control/icon_AmericanEnglish.dat";
             pictureBox1.BackgroundImage.Save(iconpath); //always set the default icon
         }
-
-        /*
-        protected override void OnPaintBackground(PaintEventArgs e)
-        {
-            using (LinearGradientBrush brush = new LinearGradientBrush(this.ClientRectangle, Color.White, Color.FromArgb(224, 224, 224, 244), 90F))
-            {
-                e.Graphics.FillRectangle(brush, this.ClientRectangle);
-            }
-        }
-        */
 
         private bool GetFilename(out string filename, DragEventArgs e)
         {
@@ -98,25 +82,37 @@ namespace NRO_Forwarder
 
         private void comboBox()
         {
-            List<Item> items = new List<Item>();
-            items.Add(new Item() { Text = "BSNes", Value = "/switch/retroarch/cores/bsnes_libretro_libnx.nro" });
-            items.Add(new Item() { Text = "Citra", Value = "/switch/retroarch/cores/citra_libretro_libnx.nro" });
-            items.Add(new Item() { Text = "Gambatte", Value = "/switch/retroarch/cores/gambatte_libretro_libnx.nro" });
-            items.Add(new Item() { Text = "Mgba", Value = "/switch/retroarch/cores/mgba_libretro_libnx.nro" });
-            items.Add(new Item() { Text = "Mgba Standalone", Value = "/switch/mgba.nro" });
-            items.Add(new Item() { Text = "Mupen64plus", Value = "/switch/retroarch/cores/mupen64plus_next_libretro_libnx.nro" });
-            items.Add(new Item() { Text = "Nestopia", Value = "/switch/retroarch/cores/nestopia_libretro_libnx.nro" });
-            items.Add(new Item() { Text = "PCSX Rearmed", Value = "/switch/retroarch/cores/pcsx_rearmed_libretro_libnx.nro" });
-            items.Add(new Item() { Text = "PicoDrive", Value = "/switch/retroarch/cores/picodrive_libretro_libnx.nro" });
-            items.Add(new Item() { Text = "PPSSPP (GLES2)", Value = "/switch/PPSSPP_GLES2.nro" });
-            items.Add(new Item() { Text = "PPSSPP (GL)", Value = "/switch/PPSSPP_GL.nro" });
-            items.Add(new Item() { Text = "Snes9x", Value = "/switch/retroarch/cores/snes9x_libretro_libnx.nro" });
-            items.Add(new Item() { Text = "Uae4all2", Value = "/switch/uae4all2/uae4all2.nro" });
+            //Create, Populate and Sort list automatically
+            List<Part> parts = new List<Part>();
+            parts.Add(new Part() { PartName = "Uae4all2", PartId = "/switch/uae4all2/uae4all2.nro" });
+            parts.Add(new Part() { PartName = "BSNes", PartId = "/switch/retroarch/cores/bsnes_libretro_libnx.nro" });
+            parts.Add(new Part() { PartName = "Citra", PartId = "/switch/retroarch/cores/citra_libretro_libnx.nro" });
+            parts.Add(new Part() { PartName = "Gambatte", PartId = "/switch/retroarch/cores/gambatte_libretro_libnx.nro" });
+            parts.Add(new Part() { PartName = "Mgba", PartId = "/switch/retroarch/cores/mgba_libretro_libnx.nro" });
+            parts.Add(new Part() { PartName = "Mgba Standalone", PartId = "/switch/mgba.nro" });
+            parts.Add(new Part() { PartName = "Mupen64plus", PartId = "/switch/retroarch/cores/mupen64plus_next_libretro_libnx.nro" });
+            parts.Add(new Part() { PartName = "Nestopia", PartId = "/switch/retroarch/cores/nestopia_libretro_libnx.nro" });
+            parts.Add(new Part() { PartName = "PCSX Rearmed", PartId = "/switch/retroarch/cores/pcsx_rearmed_libretro_libnx.nro" });
+            parts.Add(new Part() { PartName = "PicoDrive", PartId = "/switch/retroarch/cores/picodrive_libretro_libnx.nro" });
+            parts.Add(new Part() { PartName = "PPSSPP (GLES2)", PartId = "/switch/PPSSPP_GLES2.nro" });
+            parts.Add(new Part() { PartName = "PPSSPP (GL)", PartId = "/switch/PPSSPP_GL.nro" });
+            parts.Add(new Part() { PartName = "Snes9x", PartId = "/switch/retroarch/cores/snes9x_libretro_libnx.nro" });
 
+            parts.Sort();
 
-            comboBox_retro.DataSource = items;
-            comboBox_retro.DisplayMember = "Text";
-            comboBox_retro.ValueMember = "Value";
+            parts.Sort(delegate (Part x, Part y)
+            {
+                if (x.PartName == null && y.PartName == null) return 0;
+                else if (x.PartName == null) return -1;
+                else if (y.PartName == null) return 1;
+                else return x.PartName.CompareTo(y.PartName);
+            });
+
+            //add sorted list to the combobox
+            comboBox_retro.DataSource = parts;
+            comboBox_retro.DisplayMember = "PartName";
+            comboBox_retro.ValueMember = "PartId";
+
         }
 
         private void titlegen()
@@ -135,7 +131,7 @@ namespace NRO_Forwarder
             {
                 label_nro.Text = "Core Path:";
                 label_apptitle.Text = "Game Title:";
-                comboBox_retro.SelectedIndex = 12;
+                comboBox_retro.SelectedIndex = 12; //auto select Uae4all2 from comboxbox
                 textBox_RomPath.Enabled = true;
                 textBox_Path.Enabled = true;
                 textBox_Path.Visible = true;
@@ -752,7 +748,7 @@ namespace NRO_Forwarder
             byte[] patch2 = { 0x02 };
             byte[] patch3 = { 0x04 };
             byte[] patch4 = { 0x08 };
-            string info = "main.npdm Patched at 0x332 + 0x3F2";
+            string info = "main.npdm Patched at 0x332 + 0x3F2 with: ";
 
             if (File.Exists("Tools/exefs/main.npdm"))
             {
@@ -762,22 +758,22 @@ namespace NRO_Forwarder
                     case Keys.Z:
                         ReplaceData(file, pos1, patch);
                         ReplaceData(file, pos2, patch);
-                        MessageBox.Show("no debugs enabled", info); //no debugs enabled
+                        MessageBox.Show(info + "0x00", "No debugs enabled", MessageBoxButtons.OK,MessageBoxIcon.Information); //no debugs enabled
                         break;
                     case Keys.X:
                         ReplaceData(file, pos1, patch2);
                         ReplaceData(file, pos2, patch2);
-                        MessageBox.Show("Allow debug enabled", info); //Allow debug
+                        MessageBox.Show(info + "0x02", "Flag 'allow_debug' enabled", MessageBoxButtons.OK, MessageBoxIcon.Information); //Allow debug
                         break;
                     case Keys.C:
                         ReplaceData(file, pos1, patch3);
                         ReplaceData(file, pos2, patch3);
-                        MessageBox.Show("force_debug_prod enabled", info); //force_debug_prod
+                        MessageBox.Show(info + "0x04", "Flag 'force_debug_prod' enabled", MessageBoxButtons.OK, MessageBoxIcon.Information); //force_debug_prod
                         break;
                     case Keys.V:
                         ReplaceData(file, pos1, patch4);
                         ReplaceData(file, pos2, patch4);
-                        MessageBox.Show("force_debug enabled", info); //force_debug
+                        MessageBox.Show(info + "0x08", "Flag 'force_debug' enabled", MessageBoxButtons.OK, MessageBoxIcon.Information); //force_debug
                         break;
                 }
             }
@@ -813,11 +809,49 @@ namespace NRO_Forwarder
             }
         }
 
-        public class Item
+        public class Part : IEquatable<Part>, IComparable<Part>
         {
-            public Item() { }
-            public string Value { set; get; }
-            public string Text { set; get; }
+            public string PartName { get; set; }
+
+            public string PartId { get; set; }
+
+            public override string ToString()
+            {
+                return "ID: " + PartId + "   Name: " + PartName;
+            }
+            public override bool Equals(object obj)
+            {
+                if (obj == null) return false;
+                Part objAsPart = obj as Part;
+                if (objAsPart == null) return false;
+                else return Equals(objAsPart);
+            }
+            public int SortByNameAscending(string name1, string name2)
+            {
+
+                return name1.CompareTo(name2);
+            }
+
+            // Default comparer for Part type.
+            public int CompareTo(Part comparePart)
+            {
+                // A null value means that this object is greater.
+                if (comparePart == null)
+                    return 1;
+
+                else
+                    return this.PartId.CompareTo(comparePart.PartId);
+            }
+            public override int GetHashCode()
+            {
+                return 0;
+            }
+            public bool Equals(Part other)
+            {
+                if (other == null) return false;
+                return (this.PartId.Equals(other.PartId));
+            }
+            // Should also override == and != operators.
         }
     }
 }
