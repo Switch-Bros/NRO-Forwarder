@@ -802,6 +802,11 @@ namespace NRO_Forwarder
                 checkBox_licence.Checked = true;
                 checkBox_licence.Text = "Distributed By";
             }
+            if (!checkBox_licence.Checked && checkBox_licence.Text == "Licenced By")
+            {
+                checkBox_licence.Checked = false;
+                checkBox_licence.Text = "Distributed By";
+            }
         }
 
         private void button_open_MouseDown(object sender, MouseEventArgs e)
