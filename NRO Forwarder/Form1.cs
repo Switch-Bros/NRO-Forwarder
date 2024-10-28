@@ -132,7 +132,8 @@ namespace NRO_Forwarder
             {
                 label_nro.Text = "Core Path:";
                 label_apptitle.Text = "Game Title:";
-                comboBox_retro.SelectedIndex = 12; //auto select Uae4all2 from comboxbox
+                int last = comboBox_retro.Items.Count - 1;
+                comboBox_retro.SelectedIndex = last; //auto select last item in comboxbox
                 textBox_RomPath.Enabled = true;
                 textBox_CorePath.Enabled = true;
                 textBox_CorePath.Visible = true;
