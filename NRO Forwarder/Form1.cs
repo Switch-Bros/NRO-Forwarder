@@ -22,6 +22,7 @@ namespace NRO_Forwarder
         protected Image image;
         protected Thread getImageThread;
         string filepath = "";
+        private readonly object floor;
 
         public MainMenu()
         {
@@ -84,33 +85,27 @@ namespace NRO_Forwarder
         private void comboBox()
         {
             //Create, Populate and Sort list automatically
-            List<Part> parts = new List<Part>();
-            parts.Add(new Part() { emulator= "Uae4all2", nropath = "/switch/uae4all2/uae4all2.nro" });
-            parts.Add(new Part() { emulator= "BSNes", nropath = "/switch/retroarch/cores/bsnes_libretro_libnx.nro" });
-            parts.Add(new Part() { emulator= "Citra", nropath = "/switch/retroarch/cores/citra_libretro_libnx.nro" });
-            parts.Add(new Part() { emulator= "Gambatte", nropath = "/switch/retroarch/cores/gambatte_libretro_libnx.nro" });
-            parts.Add(new Part() { emulator= "Mgba", nropath = "/switch/retroarch/cores/mgba_libretro_libnx.nro" });
-            parts.Add(new Part() { emulator= "Mgba Standalone", nropath = "/switch/mgba.nro" });
-            parts.Add(new Part() { emulator= "Mupen64plus", nropath = "/switch/retroarch/cores/mupen64plus_next_libretro_libnx.nro" });
-            parts.Add(new Part() { emulator= "Nestopia", nropath = "/switch/retroarch/cores/nestopia_libretro_libnx.nro" });
-            parts.Add(new Part() { emulator= "PCSX Rearmed", nropath = "/switch/retroarch/cores/pcsx_rearmed_libretro_libnx.nro" });
-            parts.Add(new Part() { emulator= "PicoDrive", nropath = "/switch/retroarch/cores/picodrive_libretro_libnx.nro" });
-            parts.Add(new Part() { emulator= "PPSSPP (GLES2)", nropath = "/switch/PPSSPP_GLES2.nro" });
-            parts.Add(new Part() { emulator= "PPSSPP (GL)", nropath = "/switch/PPSSPP_GL.nro" });
-            parts.Add(new Part() { emulator= "Snes9x", nropath = "/switch/retroarch/cores/snes9x_libretro_libnx.nro" });
+            List<EMU> items = new List<EMU>();
+            items.Add(new EMU() { emulator = "Uae4all2", nropath = "/switch/uae4all2/uae4all2.nro", rom = "/switch/uae4all2/conf/benefactor.conf" });
+            items.Add(new EMU() { emulator= "BSNes", nropath = "/switch/retroarch/cores/bsnes_libretro_libnx.nro", rom = "retroarch/downloads/xxx" });
+            items.Add(new EMU() { emulator= "Citra", nropath = "/switch/retroarch/cores/citra_libretro_libnx.nro", rom = "retroarch/downloads/xxx" });
+            items.Add(new EMU() { emulator= "Gambatte", nropath = "/switch/retroarch/cores/gambatte_libretro_libnx.nro", rom = "retroarch/downloads/xxx" });
+            items.Add(new EMU() { emulator= "Mgba", nropath = "/switch/retroarch/cores/mgba_libretro_libnx.nro", rom = "retroarch/downloads/xxx" });
+            items.Add(new EMU() { emulator= "Mgba Standalone", nropath = "/switch/mgba.nro", rom = "retroarch/downloads/xxx" });
+            items.Add(new EMU() { emulator= "Mupen64plus", nropath = "/switch/retroarch/cores/mupen64plus_next_libretro_libnx.nro", rom = "retroarch/downloads/xxx" });
+            items.Add(new EMU() { emulator= "Nestopia", nropath = "/switch/retroarch/cores/nestopia_libretro_libnx.nro", rom = "retroarch/downloads/xxx" });
+            items.Add(new EMU() { emulator= "PCSX Rearmed", nropath = "/switch/retroarch/cores/pcsx_rearmed_libretro_libnx.nro", rom = "retroarch/downloads/xxx/" });
+            items.Add(new EMU() { emulator= "PicoDrive", nropath = "/switch/retroarch/cores/picodrive_libretro_libnx.nro", rom = "retroarch/downloads/xxx" });
+            items.Add(new EMU() { emulator= "PPSSPP (GLES2)", nropath = "/switch/PPSSPP_GLES2.nro", rom = "retroarch/downloads/xxx/xxx.smc" });
+            items.Add(new EMU() { emulator= "PPSSPP (GL)", nropath = "/switch/PPSSPP_GL.nro", rom = "retroarch/downloads/xxx/xxx.smc" });
+            items.Add(new EMU() { emulator= "Snes9x", nropath = "/switch/retroarch/cores/snes9x_libretro_libnx.nro", rom = "retroarch/downloads/xxx" });
 
-            parts.Sort();
-
-            parts.Sort(delegate (Part x, Part y)
-            {
-                if (x.emulator== null && y.emulator== null) return 0;
-                else if (x.emulator== null) return -1;
-                else if (y.emulator== null) return 1;
-                else return x.emulator.CompareTo(y.emulator);
-            });
+            //create a new sorted list from the list above
+            List<EMU> SortedList = items.OrderBy(o => o.emulator).ToList();
+            items.Clear(); //remove all items in previous list as we don't need them now we are using a sorted list
 
             //add sorted list to the combobox
-            comboBox_retro.DataSource = parts;
+            comboBox_retro.DataSource = SortedList;
             comboBox_retro.DisplayMember = "emulator";
             comboBox_retro.ValueMember = "nropath";
 
@@ -161,8 +156,9 @@ namespace NRO_Forwarder
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string myval = comboBox_retro.SelectedValue.ToString();
-            textBox_CorePath.Text = myval;
+            EMU info = this.comboBox_retro.SelectedItem as EMU;
+            textBox_CorePath.Text = info.nropath;
+            textBox_RomPath.Text = info.rom;
         }
 
         private void pictureBox1_DragOver(object sender, DragEventArgs e)
@@ -824,42 +820,17 @@ namespace NRO_Forwarder
             }
         }
 
-        public class Part : IEquatable<Part>, IComparable<Part>
+        public class EMU
         {
-            public string emulator{ get; set; }
+            public string emulator { get; set; }
             public string nropath { get; set; }
+            public string rom { get; set; }
 
+            //very important, the result will be displayed in the combox
             public override string ToString()
             {
-                return nropath;
+                return string.Format("{0}->{1}->{2}", emulator, nropath, rom);
             }
-            public int SortByNameAscending(string name1, string name2)
-            {
-
-               return name1.CompareTo(name2);
-            }
-
-            // Default comparer for Part type.
-            public int CompareTo(Part comparePart)
-            {
-                // A null value means that this object is greater.
-                if (comparePart == null)
-                    return 1;
-
-                else
-                    return this.nropath.CompareTo(comparePart.nropath);
-            }
-
-            public override int GetHashCode()
-            {
-                return 0;
-            }
-            public bool Equals(Part other)
-            {
-                if (other == null) return false;
-                return (this.nropath.Equals(other.nropath));
-            }
-            // Should also override == and != operators.
         }
     }
 }
