@@ -85,34 +85,34 @@ namespace NRO_Forwarder
         {
             //Create, Populate and Sort list automatically
             List<Part> parts = new List<Part>();
-            parts.Add(new Part() { PartName = "Uae4all2", PartId = "/switch/uae4all2/uae4all2.nro" });
-            parts.Add(new Part() { PartName = "BSNes", PartId = "/switch/retroarch/cores/bsnes_libretro_libnx.nro" });
-            parts.Add(new Part() { PartName = "Citra", PartId = "/switch/retroarch/cores/citra_libretro_libnx.nro" });
-            parts.Add(new Part() { PartName = "Gambatte", PartId = "/switch/retroarch/cores/gambatte_libretro_libnx.nro" });
-            parts.Add(new Part() { PartName = "Mgba", PartId = "/switch/retroarch/cores/mgba_libretro_libnx.nro" });
-            parts.Add(new Part() { PartName = "Mgba Standalone", PartId = "/switch/mgba.nro" });
-            parts.Add(new Part() { PartName = "Mupen64plus", PartId = "/switch/retroarch/cores/mupen64plus_next_libretro_libnx.nro" });
-            parts.Add(new Part() { PartName = "Nestopia", PartId = "/switch/retroarch/cores/nestopia_libretro_libnx.nro" });
-            parts.Add(new Part() { PartName = "PCSX Rearmed", PartId = "/switch/retroarch/cores/pcsx_rearmed_libretro_libnx.nro" });
-            parts.Add(new Part() { PartName = "PicoDrive", PartId = "/switch/retroarch/cores/picodrive_libretro_libnx.nro" });
-            parts.Add(new Part() { PartName = "PPSSPP (GLES2)", PartId = "/switch/PPSSPP_GLES2.nro" });
-            parts.Add(new Part() { PartName = "PPSSPP (GL)", PartId = "/switch/PPSSPP_GL.nro" });
-            parts.Add(new Part() { PartName = "Snes9x", PartId = "/switch/retroarch/cores/snes9x_libretro_libnx.nro" });
+            parts.Add(new Part() { emulator= "Uae4all2", nropath = "/switch/uae4all2/uae4all2.nro" });
+            parts.Add(new Part() { emulator= "BSNes", nropath = "/switch/retroarch/cores/bsnes_libretro_libnx.nro" });
+            parts.Add(new Part() { emulator= "Citra", nropath = "/switch/retroarch/cores/citra_libretro_libnx.nro" });
+            parts.Add(new Part() { emulator= "Gambatte", nropath = "/switch/retroarch/cores/gambatte_libretro_libnx.nro" });
+            parts.Add(new Part() { emulator= "Mgba", nropath = "/switch/retroarch/cores/mgba_libretro_libnx.nro" });
+            parts.Add(new Part() { emulator= "Mgba Standalone", nropath = "/switch/mgba.nro" });
+            parts.Add(new Part() { emulator= "Mupen64plus", nropath = "/switch/retroarch/cores/mupen64plus_next_libretro_libnx.nro" });
+            parts.Add(new Part() { emulator= "Nestopia", nropath = "/switch/retroarch/cores/nestopia_libretro_libnx.nro" });
+            parts.Add(new Part() { emulator= "PCSX Rearmed", nropath = "/switch/retroarch/cores/pcsx_rearmed_libretro_libnx.nro" });
+            parts.Add(new Part() { emulator= "PicoDrive", nropath = "/switch/retroarch/cores/picodrive_libretro_libnx.nro" });
+            parts.Add(new Part() { emulator= "PPSSPP (GLES2)", nropath = "/switch/PPSSPP_GLES2.nro" });
+            parts.Add(new Part() { emulator= "PPSSPP (GL)", nropath = "/switch/PPSSPP_GL.nro" });
+            parts.Add(new Part() { emulator= "Snes9x", nropath = "/switch/retroarch/cores/snes9x_libretro_libnx.nro" });
 
             parts.Sort();
 
             parts.Sort(delegate (Part x, Part y)
             {
-                if (x.PartName == null && y.PartName == null) return 0;
-                else if (x.PartName == null) return -1;
-                else if (y.PartName == null) return 1;
-                else return x.PartName.CompareTo(y.PartName);
+                if (x.emulator== null && y.emulator== null) return 0;
+                else if (x.emulator== null) return -1;
+                else if (y.emulator== null) return 1;
+                else return x.emulator.CompareTo(y.emulator);
             });
 
             //add sorted list to the combobox
             comboBox_retro.DataSource = parts;
-            comboBox_retro.DisplayMember = "PartName";
-            comboBox_retro.ValueMember = "PartId";
+            comboBox_retro.DisplayMember = "emulator";
+            comboBox_retro.ValueMember = "nropath";
 
         }
 
@@ -162,7 +162,7 @@ namespace NRO_Forwarder
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             string myval = comboBox_retro.SelectedValue.ToString();
-            textBox_CorePath.Text = myval.Replace("ID: ","");
+            textBox_CorePath.Text = myval;
         }
 
         private void pictureBox1_DragOver(object sender, DragEventArgs e)
@@ -826,25 +826,17 @@ namespace NRO_Forwarder
 
         public class Part : IEquatable<Part>, IComparable<Part>
         {
-            public string PartName { get; set; }
-
-            public string PartId { get; set; }
+            public string emulator{ get; set; }
+            public string nropath { get; set; }
 
             public override string ToString()
             {
-                return "ID: " + PartId + "   Name: " + PartName;
-            }
-            public override bool Equals(object obj)
-            {
-                if (obj == null) return false;
-                Part objAsPart = obj as Part;
-                if (objAsPart == null) return false;
-                else return Equals(objAsPart);
+                return nropath;
             }
             public int SortByNameAscending(string name1, string name2)
             {
 
-                return name1.CompareTo(name2);
+               return name1.CompareTo(name2);
             }
 
             // Default comparer for Part type.
@@ -855,8 +847,9 @@ namespace NRO_Forwarder
                     return 1;
 
                 else
-                    return this.PartId.CompareTo(comparePart.PartId);
+                    return this.nropath.CompareTo(comparePart.nropath);
             }
+
             public override int GetHashCode()
             {
                 return 0;
@@ -864,7 +857,7 @@ namespace NRO_Forwarder
             public bool Equals(Part other)
             {
                 if (other == null) return false;
-                return (this.PartId.Equals(other.PartId));
+                return (this.nropath.Equals(other.nropath));
             }
             // Should also override == and != operators.
         }
