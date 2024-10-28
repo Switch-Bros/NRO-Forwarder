@@ -86,19 +86,19 @@ namespace NRO_Forwarder
         {
             //Create, Populate and Sort list automatically
             List<EMU> items = new List<EMU>();
-            items.Add(new EMU() { emulator = "Uae4all2", nropath = "/switch/uae4all2/uae4all2.nro", rom = "/switch/uae4all2/conf/benefactor.conf" });
-            items.Add(new EMU() { emulator= "BSNes", nropath = "/switch/retroarch/cores/bsnes_libretro_libnx.nro", rom = "retroarch/downloads/xxx" });
-            items.Add(new EMU() { emulator= "Citra", nropath = "/switch/retroarch/cores/citra_libretro_libnx.nro", rom = "retroarch/downloads/xxx" });
-            items.Add(new EMU() { emulator= "Gambatte", nropath = "/switch/retroarch/cores/gambatte_libretro_libnx.nro", rom = "retroarch/downloads/xxx" });
-            items.Add(new EMU() { emulator= "Mgba", nropath = "/switch/retroarch/cores/mgba_libretro_libnx.nro", rom = "retroarch/downloads/xxx" });
-            items.Add(new EMU() { emulator= "Mgba Standalone", nropath = "/switch/mgba.nro", rom = "retroarch/downloads/xxx" });
-            items.Add(new EMU() { emulator= "Mupen64plus", nropath = "/switch/retroarch/cores/mupen64plus_next_libretro_libnx.nro", rom = "retroarch/downloads/xxx" });
-            items.Add(new EMU() { emulator= "Nestopia", nropath = "/switch/retroarch/cores/nestopia_libretro_libnx.nro", rom = "retroarch/downloads/xxx" });
-            items.Add(new EMU() { emulator= "PCSX Rearmed", nropath = "/switch/retroarch/cores/pcsx_rearmed_libretro_libnx.nro", rom = "retroarch/downloads/xxx/" });
-            items.Add(new EMU() { emulator= "PicoDrive", nropath = "/switch/retroarch/cores/picodrive_libretro_libnx.nro", rom = "retroarch/downloads/xxx" });
-            items.Add(new EMU() { emulator= "PPSSPP (GLES2)", nropath = "/switch/PPSSPP_GLES2.nro", rom = "retroarch/downloads/xxx/xxx.smc" });
-            items.Add(new EMU() { emulator= "PPSSPP (GL)", nropath = "/switch/PPSSPP_GL.nro", rom = "retroarch/downloads/xxx/xxx.smc" });
-            items.Add(new EMU() { emulator= "Snes9x", nropath = "/switch/retroarch/cores/snes9x_libretro_libnx.nro", rom = "retroarch/downloads/xxx" });
+            items.Add(new EMU() { emulator = "Uae4all2", nropath = "/switch/uae4all2/uae4all2.nro", rompath = "/switch/uae4all2/conf/benefactor.conf" });
+            items.Add(new EMU() { emulator= "BSNes", nropath = "/retroarch/cores/bsnes_libretro_libnx.nro", rompath = "/retroarch/downloads/xxx" });
+            items.Add(new EMU() { emulator= "Citra", nropath = "/retroarch/cores/citra_libretro_libnx.nro", rompath = "/retroarch/downloads/xxx" });
+            items.Add(new EMU() { emulator= "Gambatte", nropath = "/retroarch/cores/gambatte_libretro_libnx.nro", rompath = "/retroarch/downloads/xxx" });
+            items.Add(new EMU() { emulator= "Mgba", nropath = "/retroarch/cores/mgba_libretro_libnx.nro", rompath = "/retroarch/downloads/xxx" });
+            items.Add(new EMU() { emulator= "Mgba Standalone", nropath = "/switch/mgba/mgba.nro", rompath = "/switch/mgba/xxx" });
+            items.Add(new EMU() { emulator= "Mupen64plus", nropath = "/retroarch/cores/mupen64plus_next_libretro_libnx.nro", rompath = "/retroarch/downloads/xxx" });
+            items.Add(new EMU() { emulator= "Nestopia", nropath = "/retroarch/cores/nestopia_libretro_libnx.nro", rompath = "/retroarch/downloads/xxx" });
+            items.Add(new EMU() { emulator= "PCSX Rearmed", nropath = "/retroarch/cores/pcsx_rearmed_libretro_libnx.nro", rompath = "/retroarch/downloads/xxx/" });
+            items.Add(new EMU() { emulator= "PicoDrive", nropath = "/retroarch/cores/picodrive_libretro_libnx.nro", rompath = "/retroarch/downloads/xxx" });
+            items.Add(new EMU() { emulator= "PPSSPP (GLES2)", nropath = "/switch/ppsspp/PPSSPP_GLES2.nro", rompath = "/switch/ppsspp/xxx" });
+            items.Add(new EMU() { emulator= "PPSSPP (GL)", nropath = "/switch/PPSSPP_GL/PPSSPP_GL.nro", rompath = "/switch/PPSSPP_GL/xxx" });
+            items.Add(new EMU() { emulator= "Snes9x", nropath = "/retroarch/cores/snes9x_libretro_libnx.nro", rompath = "/retroarch/downloads/xxx" });
 
             //create a new sorted list from the list above
             List<EMU> SortedList = items.OrderBy(o => o.emulator).ToList();
@@ -158,7 +158,7 @@ namespace NRO_Forwarder
         {
             EMU info = this.comboBox_retro.SelectedItem as EMU;
             textBox_CorePath.Text = info.nropath;
-            textBox_RomPath.Text = info.rom;
+            textBox_RomPath.Text = info.rompath;
         }
 
         private void pictureBox1_DragOver(object sender, DragEventArgs e)
@@ -824,12 +824,12 @@ namespace NRO_Forwarder
         {
             public string emulator { get; set; }
             public string nropath { get; set; }
-            public string rom { get; set; }
+            public string rompath { get; set; }
 
             //very important, the result will be displayed in the combox
             public override string ToString()
             {
-                return string.Format("{0}->{1}->{2}", emulator, nropath, rom);
+                return string.Format("{0}->{1}->{2}", emulator, nropath, rompath);
             }
         }
     }
