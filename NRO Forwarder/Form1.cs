@@ -87,18 +87,18 @@ namespace NRO_Forwarder
             //Create, Populate and Sort list automatically
             List<EMU> items = new List<EMU>();
             items.Add(new EMU() { emulator = "Uae4all2", nropath = "/switch/uae4all2/uae4all2.nro", rompath = "/switch/uae4all2/conf/benefactor.conf" });
-            items.Add(new EMU() { emulator= "BSNes", nropath = "/retroarch/cores/bsnes_libretro_libnx.nro", rompath = "/retroarch/downloads/xxx" });
-            items.Add(new EMU() { emulator= "Citra", nropath = "/retroarch/cores/citra_libretro_libnx.nro", rompath = "/retroarch/downloads/xxx" });
-            items.Add(new EMU() { emulator= "Gambatte", nropath = "/retroarch/cores/gambatte_libretro_libnx.nro", rompath = "/retroarch/downloads/xxx" });
-            items.Add(new EMU() { emulator= "Mgba", nropath = "/retroarch/cores/mgba_libretro_libnx.nro", rompath = "/retroarch/downloads/xxx" });
-            items.Add(new EMU() { emulator= "Mgba Standalone", nropath = "/switch/mgba/mgba.nro", rompath = "/switch/mgba/xxx" });
-            items.Add(new EMU() { emulator= "Mupen64plus", nropath = "/retroarch/cores/mupen64plus_next_libretro_libnx.nro", rompath = "/retroarch/downloads/xxx" });
-            items.Add(new EMU() { emulator= "Nestopia", nropath = "/retroarch/cores/nestopia_libretro_libnx.nro", rompath = "/retroarch/downloads/xxx" });
-            items.Add(new EMU() { emulator= "PCSX Rearmed", nropath = "/retroarch/cores/pcsx_rearmed_libretro_libnx.nro", rompath = "/retroarch/downloads/xxx/" });
-            items.Add(new EMU() { emulator= "PicoDrive", nropath = "/retroarch/cores/picodrive_libretro_libnx.nro", rompath = "/retroarch/downloads/xxx" });
-            items.Add(new EMU() { emulator= "PPSSPP (GLES2)", nropath = "/switch/ppsspp/PPSSPP_GLES2.nro", rompath = "/switch/ppsspp/xxx" });
-            items.Add(new EMU() { emulator= "PPSSPP (GL)", nropath = "/switch/PPSSPP_GL/PPSSPP_GL.nro", rompath = "/switch/PPSSPP_GL/xxx" });
-            items.Add(new EMU() { emulator= "Snes9x", nropath = "/retroarch/cores/snes9x_libretro_libnx.nro", rompath = "/retroarch/downloads/xxx" });
+            items.Add(new EMU() { emulator = "BSNes", nropath = "/retroarch/cores/bsnes_libretro_libnx.nro", rompath = "/retroarch/downloads/xxx" });
+            items.Add(new EMU() { emulator = "Citra", nropath = "/retroarch/cores/citra_libretro_libnx.nro", rompath = "/retroarch/downloads/xxx" });
+            items.Add(new EMU() { emulator = "Gambatte", nropath = "/retroarch/cores/gambatte_libretro_libnx.nro", rompath = "/retroarch/downloads/xxx" });
+            items.Add(new EMU() { emulator = "Mgba", nropath = "/retroarch/cores/mgba_libretro_libnx.nro", rompath = "/retroarch/downloads/xxx" });
+            items.Add(new EMU() { emulator = "Mgba Standalone", nropath = "/switch/mgba/mgba.nro", rompath = "/switch/mgba/xxx" });
+            items.Add(new EMU() { emulator = "Mupen64plus", nropath = "/retroarch/cores/mupen64plus_next_libretro_libnx.nro", rompath = "/retroarch/downloads/xxx" });
+            items.Add(new EMU() { emulator = "Nestopia", nropath = "/retroarch/cores/nestopia_libretro_libnx.nro", rompath = "/retroarch/downloads/xxx" });
+            items.Add(new EMU() { emulator = "PCSX Rearmed", nropath = "/retroarch/cores/pcsx_rearmed_libretro_libnx.nro", rompath = "/retroarch/downloads/xxx/" });
+            items.Add(new EMU() { emulator = "PicoDrive", nropath = "/retroarch/cores/picodrive_libretro_libnx.nro", rompath = "/retroarch/downloads/xxx" });
+            items.Add(new EMU() { emulator = "PPSSPP (GLES2)", nropath = "/switch/ppsspp/PPSSPP_GLES2.nro", rompath = "/switch/ppsspp/xxx" });
+            items.Add(new EMU() { emulator = "PPSSPP (GL)", nropath = "/switch/PPSSPP_GL/PPSSPP_GL.nro", rompath = "/switch/PPSSPP_GL/xxx" });
+            items.Add(new EMU() { emulator = "Snes9x", nropath = "/retroarch/cores/snes9x_libretro_libnx.nro", rompath = "/retroarch/downloads/xxx" });
 
             //create a new sorted list from the list above
             List<EMU> SortedList = items.OrderBy(o => o.emulator).ToList();
@@ -520,7 +520,7 @@ namespace NRO_Forwarder
                 }
                 else
                 {
-                    pos = 12528; //Change Licence info to Licenced By (0x30F0)
+                    pos = 12528; //Change Licence info to no text (0x30F0)
                     byte[] licence = { 0x02 };
                     ReplaceData(file, pos, licence);
                 }
@@ -762,7 +762,7 @@ namespace NRO_Forwarder
                     case Keys.Z:
                         ReplaceData(file, pos1, patch);
                         ReplaceData(file, pos2, patch);
-                        MessageBox.Show(info + "0x00", "No debugs enabled", MessageBoxButtons.OK,MessageBoxIcon.Information); //no debugs enabled
+                        MessageBox.Show(info + "0x00", "No debugs enabled", MessageBoxButtons.OK, MessageBoxIcon.Information); //no debugs enabled
                         break;
                     case Keys.X:
                         ReplaceData(file, pos1, patch2);
@@ -789,7 +789,7 @@ namespace NRO_Forwarder
 
         private void checkBox_licence_CheckedChanged(object sender, EventArgs e)
         {
-            if (!checkBox_licence.Checked  && checkBox_licence.Text == "Distributed By")
+            if (!checkBox_licence.Checked && checkBox_licence.Text == "Distributed By")
             {
                 checkBox_licence.Checked = true;
                 checkBox_licence.Text = "Licenced By";
@@ -799,9 +799,14 @@ namespace NRO_Forwarder
                 checkBox_licence.Checked = true;
                 checkBox_licence.Text = "Distributed By";
             }
-            if (!checkBox_licence.Checked && checkBox_licence.Text == "Licenced By")
+            else if (!checkBox_licence.Checked && checkBox_licence.Text == "Licenced By")
             {
-                checkBox_licence.Checked = false;
+                checkBox_licence.Checked = true;
+                checkBox_licence.Text = "No Text";
+            }
+            else if (!checkBox_licence.Checked && checkBox_licence.Text == "No Text")
+            {
+                checkBox_licence.Checked = true;
                 checkBox_licence.Text = "Distributed By";
             }
         }

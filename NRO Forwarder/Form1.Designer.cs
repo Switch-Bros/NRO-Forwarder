@@ -325,6 +325,8 @@
             // checkBox_licence
             // 
             this.checkBox_licence.AutoSize = true;
+            this.checkBox_licence.Checked = true;
+            this.checkBox_licence.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox_licence.Location = new System.Drawing.Point(4, 295);
             this.checkBox_licence.Name = "checkBox_licence";
             this.checkBox_licence.Size = new System.Drawing.Size(91, 17);
