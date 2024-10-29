@@ -48,7 +48,7 @@ program fixes those issues and converts them properly for you.
 ## PlayLogPolicy & PlayLogQueryCapability
 Included control.nacp - modifies the PlayLogPolicy flag (0x3037) which is now set to 0x02 (Return None).
 PlayLogQueryCapability (0x3210) is also set to 0x02 (Allow all titles). This stops the forwarder from showing up in your
-activity logs (you canuse DBI installer to check this).
+activity logs (you can use DBI installer to check this).
 
 ## Alternatives to this program
 [NSP Forwarder Generator](https://nsp-forwarder-git-fork-masagrator-main-tootallteam.vercel.app/)  
