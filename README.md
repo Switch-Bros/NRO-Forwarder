@@ -28,14 +28,13 @@ paths to fill in, one for the nro file and one for the game/config file.
 ## Saving Icons
 NRO icons can be saved by right clicking on the picture box and selecting "Save Image" from the dropdown menu.
 
-## Advanced Hidden Feature (Fix Forwarders for certain firmware and AMS versions)
-Clicking the Generate button and moving the mouse away from it, will select that button without making the forwader,
-you can then press either the "Z", "X", "C", "V" buttons on your keyboard to patch the debug flags in the main.npdm file.  
+## Advanced Feature (Fix Forwarders for certain firmware and AMS versions)
+Clicking with your right mouse button on the Generate button will open a hidden patch window, you can patch main.npdm with the following:
 
-Z = No Debug flags  
-X = Allow Debug  
-C = Use for firmware 18.0.x and below and < AMS 1.8.x  
-V = Use for firmware 19.0.x and + AMS 1.8.x  
+No Debug flags  
+Allow Debug  
+Force_debug_prod (Use for firmware 18.0.x and below and < AMS 1.8.x)  
+Force_debug (Use for firmware 19.0.x and + AMS 1.8.x)  
 
 ## Hackbrewpack
 This has been modified from the original source, it has had the extra debug flag values added to make it generate compatible

@@ -486,6 +486,8 @@ namespace NRO_Forwarder
                     {
                         fileStream.WriteByte(newcontrol[q]);
                     }
+                    fileStream.Close();
+                    fileStream.Dispose();
                 }
 
                 //patch main.npdm with correct ID
@@ -588,6 +590,7 @@ namespace NRO_Forwarder
                 //byte[] versionblank = { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
                 //ReplaceData(file, pos, versionblank); //Reset Version
                 ReplaceData(file, pos, data);//Write New Version String
+                Array.Clear(data, 0, data.Length);
 
                 //cleanup old backup files and remove old nro's
                 if (Directory.Exists("Tools/NSP"))
@@ -599,10 +602,12 @@ namespace NRO_Forwarder
                 //Try to Build NSP
                 try
                 {
+                    string myargs = " --titleid " + titleid + " --titlename " + '"' + apptitle + '"' + " --titlepublisher " + '"' + publisher + '"' + " --nspdir NSP -k ./prod.keys";
+                    
                     Process process = new Process();
                     process.StartInfo.WorkingDirectory = "Tools";
                     process.StartInfo.FileName = "Tools\\hacbrewpack.exe";
-                    process.StartInfo.Arguments = " --titleid " + titleid + " --titlename " + '"' + apptitle + '"' + " --titlepublisher " + '"' + publisher + '"' + " --nspdir NSP -k ./prod.keys";
+                    process.StartInfo.Arguments = myargs;
                     process.StartInfo.UseShellExecute = false;
                     process.StartInfo.CreateNoWindow = true;
                     process.StartInfo.RedirectStandardOutput = false;
@@ -673,6 +678,8 @@ namespace NRO_Forwarder
             {
                 stream.Position = position;
                 stream.Write(data, 0, data.Length);
+                stream.Close();
+                stream.Dispose();
             }
         }
 
@@ -744,6 +751,7 @@ namespace NRO_Forwarder
             "force_debug_prod": false
             */
 
+            /*
             String file = "Tools/exefs/main.npdm";
             int pos1 = 818; //(0x332)
             int pos2 = 1010; //(0x3F2)
@@ -784,6 +792,7 @@ namespace NRO_Forwarder
             {
                 MessageBox.Show("Cant'find " + file, "Oops"); //Atmosphere pre-1.8.0
             }
+            */
         }
 
         private void checkBox_licence_CheckedChanged(object sender, EventArgs e)
@@ -834,6 +843,30 @@ namespace NRO_Forwarder
             public override string ToString()
             {
                 return string.Format("{0}->{1}->{2}", emulator, nropath, rompath);
+            }
+        }
+
+        private void button_Generate_MouseDown(object sender, MouseEventArgs e)
+        {
+            try
+            {
+                switch (e.Button)
+                {
+                    case MouseButtons.Right:
+                        Form search = new Form_Patch();
+                        this.Hide();
+                        search.ShowDialog();
+                        this.Show();
+                        break;
+
+                    case MouseButtons.Left:
+                        //
+                        break;
+                }
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show("Error is: " + error.Message);
             }
         }
     }

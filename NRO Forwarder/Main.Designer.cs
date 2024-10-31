@@ -159,10 +159,11 @@
             this.button_Generate.Size = new System.Drawing.Size(82, 20);
             this.button_Generate.TabIndex = 5;
             this.button_Generate.Text = "Generate NSP";
-            this.toolTip1.SetToolTip(this.button_Generate, "Generate forwarder NSP");
+            this.toolTip1.SetToolTip(this.button_Generate, "Click right mouse button to patch main.npdm");
             this.button_Generate.UseVisualStyleBackColor = true;
             this.button_Generate.Click += new System.EventHandler(this.button_Generate_Click);
             this.button_Generate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.button_Generate_KeyDown);
+            this.button_Generate.MouseDown += new System.Windows.Forms.MouseEventHandler(this.button_Generate_MouseDown);
             // 
             // textBox_TIT
             // 
