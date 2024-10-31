@@ -75,6 +75,7 @@
     <ManifestCertificateThumbprint>1F254739C32F41FC3B14E8FE1716112B00A354EE</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
+    <ManifestKeyFile>NRO Forwarder_1_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
@@ -86,6 +87,7 @@
     <SignAssembly>true</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
+    <AssemblyOriginatorKeyFile>NRO Forwarder_1_TemporaryKey.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />

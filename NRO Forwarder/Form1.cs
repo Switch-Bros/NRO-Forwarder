@@ -22,7 +22,6 @@ namespace NRO_Forwarder
         protected Image image;
         protected Thread getImageThread;
         string filepath = "";
-        private readonly object floor;
 
         public MainMenu()
         {
