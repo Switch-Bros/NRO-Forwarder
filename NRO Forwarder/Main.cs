@@ -63,7 +63,7 @@ namespace NRO_Forwarder
                     {
                         filename = ((string[])data)[0];
                         string ext = Path.GetExtension(filename).ToLower();
-                        if ((ext == ".jpg") || (ext == ".jpeg") || (ext == ".jfif") || (ext == ".png") || (ext == ".bmp") || (ext == ".gif") || (ext == ".tif"))
+                        if ((ext == ".jpg") || (ext == ".jpeg") || (ext == ".jfif") || (ext == ".png") || (ext == ".bmp") || (ext == ".gif") || (ext == ".tif") || (ext == ".ico"))
                         {
                             ret = true;
                         }
@@ -251,12 +251,12 @@ namespace NRO_Forwarder
             {
                 OpenFileDialog openFileDialog = new OpenFileDialog();
                 openFileDialog.Title = "Select a graphics file";
-                openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.jfif;*.png;*.bmp;*.gif;*.tif";
+                openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.jfif;*.png;*.bmp;*.gif;*.tif;*.ico";
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
 
                     String x = openFileDialog.FileName;
-                    bool myfile = x.Contains("png") || x.Contains("jpg") || x.Contains("jpeg") || x.Contains("jfif") ||  x.Contains("gif") || x.Contains("bmp") || x.Contains("tif");
+                    bool myfile = x.Contains("png") || x.Contains("jpg") || x.Contains("jpeg") || x.Contains("jfif") ||  x.Contains("gif") || x.Contains("bmp") || x.Contains("tif") || x.Contains("ico");
                     if (myfile)
                     {
                         Bitmap b = new Bitmap(x);
