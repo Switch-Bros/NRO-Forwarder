@@ -245,21 +245,31 @@ namespace NRO_Forwarder
             return (destImage);
         }
 
+
         private void loadImageToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
             {
                 OpenFileDialog openFileDialog = new OpenFileDialog();
                 openFileDialog.Title = "Select a graphics file";
-                openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.jfif;*.png;*.bmp;*.gif;*.tif;*.ico";
+                openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.jfif;*.png;*.bmp;*.gif;*.tif;*.ico"; //add more formats later
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
 
                     String x = openFileDialog.FileName;
-                    bool myfile = x.Contains("png") || x.Contains("jpg") || x.Contains("jpeg") || x.Contains("jfif") ||  x.Contains("gif") || x.Contains("bmp") || x.Contains("tif") || x.Contains("ico");
+                    Bitmap b = null;
+                    bool myfile = x.Contains("png") || x.Contains("jpg") || x.Contains("jpeg") || x.Contains("jfif") ||  x.Contains("gif") || x.Contains("bmp") || x.Contains("tif") || x.Contains("ico") || x.Contains("ico") || x.Contains("webp");
                     if (myfile)
                     {
-                        Bitmap b = new Bitmap(x);
+                        if (myfile = x.Contains("webp"))
+                        {
+                            //add converion code for webp and other image formats here later....
+                            b = new Bitmap(x);
+                        }
+                        else
+                        {
+                            b = new Bitmap(x);
+                        }
                         System.Drawing.Image i = ResizeImage(b, 256, 256);
                         //pictureBox1.BackgroundImage = new Bitmap(i);
                         // Save the image in JPEG format.
@@ -602,7 +612,11 @@ namespace NRO_Forwarder
                 //Try to Build NSP
                 try
                 {
-                    string myargs = " --titleid " + titleid + " --titlename " + '"' + apptitle + '"' + " --titlepublisher " + '"' + publisher + '"' + " --nspdir NSP -k ./prod.keys";
+                    string myargs;
+                    if (checkBox_nologo.Checked)
+                        myargs = " --nologo --titleid " + titleid + " --titlename " + '"' + apptitle + '"' + " --titlepublisher " + '"' + publisher + '"' + " --nspdir NSP -k ./prod.keys";
+                    else
+                        myargs = " --titleid " + titleid + " --titlename " + '"' + apptitle + '"' + " --titlepublisher " + '"' + publisher + '"' + " --nspdir NSP -k ./prod.keys";
                     
                     Process process = new Process();
                     process.StartInfo.WorkingDirectory = "Tools";

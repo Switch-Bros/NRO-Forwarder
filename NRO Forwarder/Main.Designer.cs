@@ -58,6 +58,7 @@
             this.button_explore = new System.Windows.Forms.Button();
             this.button_open = new System.Windows.Forms.Button();
             this.checkBox_licence = new System.Windows.Forms.CheckBox();
+            this.checkBox_nologo = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -337,6 +338,17 @@
             this.checkBox_licence.UseVisualStyleBackColor = true;
             this.checkBox_licence.CheckedChanged += new System.EventHandler(this.checkBox_licence_CheckedChanged);
             // 
+            // checkBox_nologo
+            // 
+            this.checkBox_nologo.AutoSize = true;
+            this.checkBox_nologo.Location = new System.Drawing.Point(134, 295);
+            this.checkBox_nologo.Name = "checkBox_nologo";
+            this.checkBox_nologo.Size = new System.Drawing.Size(67, 17);
+            this.checkBox_nologo.TabIndex = 24;
+            this.checkBox_nologo.Text = "No Logo";
+            this.toolTip1.SetToolTip(this.checkBox_nologo, "Build NRO forwarder with no logo");
+            this.checkBox_nologo.UseVisualStyleBackColor = true;
+            // 
             // MainMenu
             // 
             this.AllowDrop = true;
@@ -344,6 +356,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(264, 513);
+            this.Controls.Add(this.checkBox_nologo);
             this.Controls.Add(this.checkBox_licence);
             this.Controls.Add(this.button_explore);
             this.Controls.Add(this.textBox_CorePath);
@@ -410,6 +423,7 @@
         private System.Windows.Forms.Button button_explore;
         private System.Windows.Forms.Button button_open;
         private System.Windows.Forms.CheckBox checkBox_licence;
+        private System.Windows.Forms.CheckBox checkBox_nologo;
     }
 }
 
