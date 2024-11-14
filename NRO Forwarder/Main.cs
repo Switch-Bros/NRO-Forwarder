@@ -264,6 +264,7 @@ namespace NRO_Forwarder
                         if (myfile = x.Contains("webp"))
                         {
                             //add converion code for webp and other image formats here later....
+                            //https://briancaos.wordpress.com/2022/08/29/c-convert-webp-to-jpeg-in-net/
                             b = new Bitmap(x);
                         }
                         else
