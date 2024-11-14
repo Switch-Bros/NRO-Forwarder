@@ -258,7 +258,7 @@ namespace NRO_Forwarder
 
                     String x = openFileDialog.FileName;
                     Bitmap b = null;
-                    bool myfile = x.Contains("png") || x.Contains("jpg") || x.Contains("jpeg") || x.Contains("jfif") ||  x.Contains("gif") || x.Contains("bmp") || x.Contains("tif") || x.Contains("ico") || x.Contains("ico") || x.Contains("webp");
+                    bool myfile = x.Contains("png") || x.Contains("jpg") || x.Contains("jpeg") || x.Contains("jfif") ||  x.Contains("gif") || x.Contains("bmp") || x.Contains("tif") || x.Contains("ico") || x.Contains("webp");
                     if (myfile)
                     {
                         if (myfile = x.Contains("webp"))
