@@ -252,20 +252,21 @@ namespace NRO_Forwarder
             {
                 OpenFileDialog openFileDialog = new OpenFileDialog();
                 openFileDialog.Title = "Select a graphics file";
-                openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.jfif;*.png;*.bmp;*.gif;*.tif;*.ico"; //add more formats later
+                openFileDialog.Filter = "Supported Files|*.jpg;*.jpeg;*.jfif;*.png;*.bmp;*.gif;*.tif;*.tiff;*.ico|JPEG files (*.jpg;*.jpeg;*.jfif)|*.jpg;*.jpeg;*.jfif|PNG (*.png)|*.png|BMP (*.bmp)|*.bmp|GIF (*.gif)|*.gif|TIFF (*.tiff, *.tif)|*.tiff;*.tif|ICO (*.ico)|*.ico|All Files (*.*)|*.*";
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
 
                     String x = openFileDialog.FileName;
                     Bitmap b = null;
-                    bool myfile = x.Contains("png") || x.Contains("jpg") || x.Contains("jpeg") || x.Contains("jfif") ||  x.Contains("gif") || x.Contains("bmp") || x.Contains("tif") || x.Contains("ico") || x.Contains("webp");
+                    bool myfile = x.Contains("png") || x.Contains("jpg") || x.Contains("jpeg") || x.Contains("jfif") ||  x.Contains("gif") || x.Contains("bmp") || x.Contains("tiff") || x.Contains("tif") || x.Contains("ico") || x.Contains("webp");
                     if (myfile)
                     {
                         if (myfile = x.Contains("webp"))
                         {
                             //add converion code for webp and other image formats here later....
                             //https://briancaos.wordpress.com/2022/08/29/c-convert-webp-to-jpeg-in-net/
-                            b = new Bitmap(x);
+                            //b = new Bitmap(x);
+                            MessageBox.Show("File not supported yet, this will be added later", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         }
                         else
                         {
