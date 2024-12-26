@@ -185,6 +185,7 @@
             this.textBox_AppTitle.TabIndex = 9;
             this.textBox_AppTitle.Text = "Forwarder";
             this.toolTip1.SetToolTip(this.textBox_AppTitle, "Enter the name of the homebrew app or game");
+            this.textBox_AppTitle.TextChanged += new System.EventHandler(this.textBox_AppTitle_TextChanged);
             // 
             // textBox_publisher
             // 

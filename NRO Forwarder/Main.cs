@@ -885,5 +885,46 @@ namespace NRO_Forwarder
                 MessageBox.Show("Error is: " + error.Message);
             }
         }
+
+        private void textBox_AppTitle_TextChanged(object sender, EventArgs e)
+        {
+            /*Generate the same TID for the forwarder based on the App Title name.
+            https://learn.microsoft.com/en-us/dotnet/api/system.security.cryptography?view=net-9.0
+            */
+            
+            String sSourceData = textBox_AppTitle.Text;
+            byte[] tmpSource;
+            byte[] tmpHash;
+            
+            //Create a byte array from source data
+            tmpSource = ASCIIEncoding.ASCII.GetBytes(sSourceData);
+            
+            tmpHash = new SHA1CryptoServiceProvider().ComputeHash(tmpSource);
+            string hashval = ByteArrayToString(tmpHash);
+            string str = hashval.Substring(0, 16); //get x amount of chars from string
+            textBox_TIT.Text = str;
+
+            string check = textBox_TIT.Text.ToUpper();
+            char[] ch = check.ToCharArray();
+            if (ch[12] != '0')
+            {
+                ch[12] = '0';
+            }
+            string newstring = new string(ch);
+            textBox_TIT.Text = newstring;
+            Array.Clear(tmpSource,0,tmpSource.Length);
+            Array.Clear(tmpHash, 0, tmpHash.Length);
+        }
+
+        static string ByteArrayToString(byte[] arrInput)
+        {
+            int i;
+            StringBuilder sOutput = new StringBuilder(arrInput.Length);
+            for (i = 0; i < arrInput.Length; i++)
+            {
+                sOutput.Append(arrInput[i].ToString("X2"));
+            }
+            return sOutput.ToString();
+        }
     }
 }
